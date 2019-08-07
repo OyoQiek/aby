@@ -105,7 +105,11 @@ CREATE TABLE aby_order(
 #创建用户心愿单
 create table aby_wish(
     wid INT PRIMARY KEY AUTO_INCREMENT,   #心愿单id
-    uid INT,
+    w_title VARVHAR(32),                  #心愿单标题
+    uid INT
+);
+create table aby_wish_content(
+    wcid INT PRIMARY KEY AUTO_INCREMENT,
     storyid INT,
     hid INT
 );
