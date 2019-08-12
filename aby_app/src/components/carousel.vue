@@ -1,5 +1,5 @@
 <template>
-  <div class="carousel" :style="{width:innerWidth+'px'}">
+  <div class="carousel" id="carousel" :style="{width:innerWidth+'px'}">
       <!--1.轮播图片-->
         <div class="carousel-inner" :class="ulClass" :style="ulStyle">
         <div v-for="(img,i) of imgs" :key="i" class="carousel-item" :style="{width:innerWidth+'px'}">
@@ -44,29 +44,12 @@ export default {
         }
       ],
       canClick:true,
-      startX:0,
-      startY:0,
-      moveEndX:0,
-      moveEndX:0,
-      X:0,
-      Y:0
+      
     }
   },
   created(){
     window.addEventListener("resize",()=>{
       this.innerWidth=window.innerWidth;
-    });
-    document.getElementsByClassName("carousel")[0].addEventListener("touchstart", function(e) {
-        e.preventDefault();
-        startX = e.originalEvent.changedTouches[0].pageX,
-        startY = e.originalEvent.changedTouches[0].pageY;
-    });
-    document.getElementsByClassName("carousel")[0].addEventListener("touchmove", function(e) {
-        e.preventDefault();
-        moveEndX = e.originalEvent.changedTouches[0].pageX,
-        moveEndY = e.originalEvent.changedTouches[0].pageY,
-        X = moveEndX - startX,
-        Y = moveEndY - startY;
     });
   },
   methods:{
@@ -124,7 +107,10 @@ export default {
       var marginLeft=-this.i*this.innerWidth+"px";  
       return { width, marginLeft }
     }
-  }
+  },
+
+  // 触屏事件
+  
 }
 </script>
 <style scoped>

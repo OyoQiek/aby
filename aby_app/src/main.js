@@ -8,10 +8,10 @@ import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 //引入字体图标
 import './font/iconfont.css'
-axios.defaults.baseURL="http://127.0.0.1:3000/"
-axios.defaults.withCredentials=true
+// axios.defaults.baseURL="http://127.0.0.1:3000/"
+// axios.defaults.withCredentials=true
 Vue.use(MintUI)
-Vue.use(axios)
+// Vue.use(axios)
 Vue.config.productionTip = false
 
 new Vue({
