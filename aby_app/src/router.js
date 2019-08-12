@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import HDetail from './views/detail/HDetail'
-import Story from './views/Story.vue'
+import Story from './views/story.vue'
 Vue.use(Router)
 
 export default new Router({
