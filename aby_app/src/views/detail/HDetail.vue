@@ -10,7 +10,7 @@
     </div>
 </template>
 <script>
-import Carousel from '../../components/Carousel'
+import Carousel from '../../components/carousel'
 export default {
     components:{
         Carousel,
