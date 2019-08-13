@@ -6,16 +6,16 @@
         </div>
         <div id="nav">
           <mt-navbar v-model="selected">
-            <mt-tab-item id="1">所有故事</mt-tab-item>
-            <mt-tab-item id="2">名宿</mt-tab-item>
-            <mt-tab-item id="3">美食</mt-tab-item>
-            <mt-tab-item id="4">景点</mt-tab-item>
+            <mt-tab-item id="1">名宿</mt-tab-item>
+            <mt-tab-item id="2">美食</mt-tab-item>
+            <mt-tab-item id="3">景点</mt-tab-item>
+            <mt-tab-item id="4">艺术</mt-tab-item>
           </mt-navbar>
         </div>
-        <!-- tab-container -->
-            <mt-tab-container v-model="selected">
+        <div id="nav-page">
+             <mt-tab-container v-model="selected">
                 <mt-tab-container-item id="1">
-                    <h4>所有故事</h4>
+                    <message></message>
                 </mt-tab-container-item>
                 <mt-tab-container-item id="2">
                     <h4>名宿</h4>
@@ -27,16 +27,21 @@
                    <h4>景点</h4>
                 </mt-tab-container-item>
             </mt-tab-container>
-        
+        </div>
+           
     </div>    
 </template>
 <script>
+import Message from "../components/story/message.vue"
 export default {
      data(){
         return{
             selected:"1"
         }
     },
+    components:{
+        Message
+    }
 }
 </script>
 <style scoped>
@@ -65,5 +70,8 @@ export default {
     .mint-navbar .mint-tab-item.is-selected {
         border-bottom: 2px solid #000;
         color: #000;
+    }
+    nav-page{
+        margin: 30px 10px;
     }
 </style>
