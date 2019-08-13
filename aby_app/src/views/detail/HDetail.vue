@@ -6,7 +6,7 @@
                 <div><span class="iconfont icon-aixin collect"></span></div>
             </div>
         </div>
-        <div style="height:240px; background:#ddd;"></div>
+        <div style="height:240px;"> <carousel/> </div>
         <div class="baseinfo base">
             <div class="title_top"><b>成都市</b> · <b>整套公寓</b></div>
             <div class="title">【afterhours】九眼桥/春熙路/近地铁口公寓  Cozy studio near metro</div>
