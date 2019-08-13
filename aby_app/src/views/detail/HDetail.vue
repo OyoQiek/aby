@@ -1,12 +1,15 @@
 <template>
-    <div>
+    <div class="hd">
+        <!-- 头部 -->
         <div class="fixed_top">
             <div class="pr">
                 <div><img src="images/back.jpg" alt=""></div>
                 <div><span class="iconfont icon-aixin collect"></span></div>
             </div>
         </div>
+        <!-- 轮播图 -->
         <div style="height:240px;"> <carousel/> </div>
+        <!-- 基本信息 -->
         <div class="baseinfo base">
             <div class="title_top"><b>成都市</b> · <b>整套公寓</b></div>
             <div class="title">【afterhours】九眼桥/春熙路/近地铁口公寓  Cozy studio near metro</div>
@@ -16,6 +19,48 @@
                     <li class="orange">整套房子</li>
                     <li class="huise">近地铁站</li>
                 </ul>
+            </div>
+        </div>
+        <!-- 优惠模块 -->
+        <div class="base youhui">
+            <div class="youhui_bg">
+                <div><img src="images/h_detail_notice.gif" alt=""></div>
+                <div><b>享受8月1日-8月15日期间的9折优惠</b>在2天内完成预定,锁定现时好价</div>
+            </div>
+        </div>
+        <!-- 房源概览 -->
+        <div class="base fangyuangailan">
+            <h2>房源概览</h2>
+            <div class="icon_notice">
+                <ul>
+                    <li><span class="iconfont icon-icon-p_lianxirenguanli"></span><i>2</i>位房客</li>
+                    <li><span class="iconfont icon-woshi"></span><i>1</i>间卧室</li>
+                    <li><span class="iconfont icon-woshi1"></span><i>1</i>张床</li>
+                </ul>
+            </div>
+            <div class="fygl_info">
+                <mt-swipe :auto="0" :show-indicators="false">
+                    <mt-swipe-item>
+                        <div class="fygl_border">
+                            <div>整个房源</div>
+                            <div>独自使用整个空间</div>
+                        </div>
+                    </mt-swipe-item>
+                    <mt-swipe-item>
+                        <div class="fygl_border">
+                            <div>卧室1</div>
+                            <div><span class="iconfont icon-woshi"></span></div>
+                            <div>独自使用整个空间</div>
+                        </div>
+                    </mt-swipe-item>
+                    <mt-swipe-item>
+                        <div class="fygl_border">
+                            <div>卧室2</div>
+                            <div><span class="iconfont icon-woshi"></span></div>
+                            <div>独自使用整个空间</div>
+                        </div>
+                    </mt-swipe-item>
+                </mt-swipe>
             </div>
         </div>
     </div>
@@ -29,11 +74,17 @@ export default {
 }
 </script>
 <style scoped>
+    .hd{
+        background: #F2F2F2 !important;
+        color: #484848;
+        font-size: 14px;
+        }
     .fixed_top{
         position: absolute;
         background: transparent;
         width: 100%;
         height: 60px;
+        z-index: 9;
         /* 
         position:fixed;
         background:#fff;
@@ -42,6 +93,7 @@ export default {
     .fixed_top .pr{
         position: relative;
         text-align: center;
+        z-index: 9;
     }
     .fixed_top .pr div{
         position: absolute;
@@ -72,7 +124,6 @@ export default {
     }
     .baseinfo{
         color: #484848;
-        font-size: 14px;
     }
     .title_top{
         color: #341e13;
@@ -88,7 +139,6 @@ export default {
     .info_tag .tags{
         padding-bottom: 16px;
         color: #484848;
-        font-size: 14px;
     }
     .info_tag .tags li{
         padding: 6px 10px;
@@ -113,5 +163,55 @@ export default {
     }
     .info_tag .tags li:nth-child(2) ~li{
         background: #F2F2F2 !important;
+    }
+    /* 优惠内容 */
+    .hd .youhui{
+        margin-top: 1px;
+    }
+    .hd .youhui .youhui_bg{
+        padding: 8px;
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+    }
+    .hd .youhui .youhui_bg div{
+        margin: 0 10px;
+    }
+    .hd .youhui .youhui_bg div img{
+        width: 24px;
+        background: transparent;
+        vertical-align: middle;
+    }
+    /* 房源概览 */
+    .fangyuangailan{
+        margin-top: 1px;
+    }
+    .fangyuangailan h2{
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+    .fangyuangailan .icon_notice ul{
+        display: flex;
+    }
+    .fangyuangailan .icon_notice ul li span{
+        display: block;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+    .fangyuangailan .icon_notice ul li~li{
+        margin-left: 20px;
+    }
+    .fangyuangailan .fygl_info{
+        height: 125px ;
+    }
+    .fangyuangailan .fygl_info .fygl_border{
+        border: 1px solid #EBEBEB !important;
+        border-radius: 4px;
+        padding: 12px 16px 12px 16px !important;
+        margin-right: 24px;
+        width: 152px !important;
+    }
+    .fangyuangailan .fygl_info .fygl_border div{
+        text-align: center;
     }
 </style>
