@@ -91,7 +91,7 @@ export default {
         cursor: pointer;
         padding: 8px;
         margin-top: -8px;
-        font-size: 18px;
+        font-size: 20px;
     }
     .fixed_top .pr div:last-child{
         width: 32px;
@@ -101,7 +101,9 @@ export default {
         color: #fff;
         right: 20px;
     }
-
+    .fixed_top .pr div:last-child span{
+        font-size: 20px;
+    }
     /* 房源基本信息 */
     .base{
         padding: 16px 24px;
