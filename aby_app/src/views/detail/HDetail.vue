@@ -39,38 +39,19 @@
                 </ul>
             </div>
             <div class="fygl_info">
-                <mt-swipe :auto="0" :show-indicators="false">
-                    <mt-swipe-item>
-                        <div class="fygl_border">
-                            <div>整个房源</div>
-                            <div>独自使用整个空间</div>
-                        </div>
-                    </mt-swipe-item>
-                    <mt-swipe-item>
-                        <div class="fygl_border">
-                            <div>卧室1</div>
-                            <div><span class="iconfont icon-woshi"></span></div>
-                            <div>独自使用整个空间</div>
-                        </div>
-                    </mt-swipe-item>
-                    <mt-swipe-item>
-                        <div class="fygl_border">
-                            <div>卧室2</div>
-                            <div><span class="iconfont icon-woshi"></span></div>
-                            <div>独自使用整个空间</div>
-                        </div>
-                    </mt-swipe-item>
-                </mt-swipe>
+                <HouseFygs/>
             </div>
         </div>
     </div>
 </template>
 <script>
 import Carousel from '../../components/carousel'
+import HouseFygs from '../../components/hdetail/house_fygs'
 export default {
     components:{
         Carousel,
-    }
+        HouseFygs
+    },
 }
 </script>
 <style scoped>
@@ -201,17 +182,5 @@ export default {
     .fangyuangailan .icon_notice ul li~li{
         margin-left: 20px;
     }
-    .fangyuangailan .fygl_info{
-        height: 125px ;
-    }
-    .fangyuangailan .fygl_info .fygl_border{
-        border: 1px solid #EBEBEB !important;
-        border-radius: 4px;
-        padding: 12px 16px 12px 16px !important;
-        margin-right: 24px;
-        width: 152px !important;
-    }
-    .fangyuangailan .fygl_info .fygl_border div{
-        text-align: center;
-    }
+    
 </style>

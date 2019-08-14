@@ -7,7 +7,7 @@
       <mt-swipe-item><img src="images/h_detail/01/04.jpg" alt=""></mt-swipe-item>
       <mt-swipe-item><img src="images/h_detail/01/05.jpg" alt=""></mt-swipe-item>
     </mt-swipe> -->
-    <div class="swiper-container">
+    <div class="swiper-container carousel">
     <div class="swiper-wrapper">
       <div class="swiper-slide">Slide 1</div>
       <div class="swiper-slide">Slide 2</div>
@@ -26,17 +26,15 @@
   </div>
 </template>
 <script>
-
+import Swiper from 'swiper'
 export default {
-  created() {
-    window.onload=function(){
-      var swiper = new Swiper('.swiper-container', {
-    pagination: {
-      el: '.swiper-pagination',
-      dynamicBullets: true,
-    },
-  });
-    }
+  mounted() {
+    new Swiper('.carousel', {
+        pagination: {
+          el: '.swiper-pagination',
+          dynamicBullets: true,
+        },
+      });
   },
 }
 </script>

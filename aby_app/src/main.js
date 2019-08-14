@@ -8,6 +8,8 @@ import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 //引入字体图标
 import './font/iconfont.css'
+import 'swiper/dist/css/swiper.css'
+
 // axios.defaults.baseURL="http://127.0.0.1:3000/"
 // axios.defaults.withCredentials=true
 Vue.use(MintUI)
