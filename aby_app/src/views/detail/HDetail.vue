@@ -44,7 +44,7 @@
         </div>
         <!-- 摘要 -->
         <div class="abstract">
-            
+            <h2>摘要</h2>
         </div>
     </div>
 </template>
