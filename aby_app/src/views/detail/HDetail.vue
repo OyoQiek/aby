@@ -3,7 +3,7 @@
         <!-- 头部 -->
         <div class="fixed_top">
             <div class="pr">
-                <div>&lt;</div>
+                <div><span class="iconfont icon-zuo"></span></div>
                 <div><span class="iconfont icon-aixin collect"></span></div>
             </div>
         </div>
@@ -45,7 +45,15 @@
         <!-- 摘要 -->
         <div class="abstract base">
             <h2>摘要</h2>
-            <div>摘要内容.............................................................</div>
+            <div>摘要内容..........................................................asdsadsadsadasdsadasdasda.........</div>
+            <router-link to="/HDetail/abstract" class="abstract_view">查看详情</router-link>
+        </div>
+        <!-- 服务设施 -->
+        <div class="base server">
+            <h2>设施/服务</h2>
+            <div>
+
+            </div>
         </div>
     </div>
 </template>
@@ -93,6 +101,10 @@ export default {
         padding: 8px;
         margin-top: -8px;
         font-size: 20px;
+    }
+    .fixed_top .pr div:first-child span{
+        font-size: 20px;
+        display: inline-block;
     }
     .fixed_top .pr div:last-child{
         width: 32px;
@@ -178,7 +190,7 @@ export default {
     }
     /* 房源概览 */
     .fangyuangailan{
-        margin-top: 1px;
+        margin-top: 5px;
     }
     .fangyuangailan .icon_notice ul{
         display: flex;
@@ -194,5 +206,20 @@ export default {
     /* 摘要 */
     .abstract{
         margin-top: 1px;
+        font-size: 14px;
+    }
+    .abstract div{
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+    }
+    .abstract .abstract_view{
+        color: #008489;
+        display: inline-block;
+        margin-top: 16px;
+    }
+    .server{
+        margin-top: 5px;
+        font-size: 14px;
     }
 </style>
