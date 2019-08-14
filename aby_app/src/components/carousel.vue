@@ -28,7 +28,16 @@
 <script>
 
 export default {
-  
+  created() {
+    window.onload=function(){
+      var swiper = new Swiper('.swiper-container', {
+    pagination: {
+      el: '.swiper-pagination',
+      dynamicBullets: true,
+    },
+  });
+    }
+  },
 }
 </script>
 <style scoped>
