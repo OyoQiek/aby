@@ -129,7 +129,8 @@ export default {
         height: 28px;
         box-sizing: border-box;
         display: inline-block;
-        border-radius: 4px; 
+        border-radius: 4px;
+        margin-top: 4px; 
     }
     .info_tag .tags li~li{
         margin-left: 4px;

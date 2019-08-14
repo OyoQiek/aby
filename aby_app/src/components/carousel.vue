@@ -9,16 +9,16 @@
     </mt-swipe> -->
     <div class="swiper-container carousel">
     <div class="swiper-wrapper">
-      <div class="swiper-slide">Slide 1</div>
-      <div class="swiper-slide">Slide 2</div>
-      <div class="swiper-slide">Slide 3</div>
-      <div class="swiper-slide">Slide 4</div>
-      <div class="swiper-slide">Slide 5</div>
-      <div class="swiper-slide">Slide 6</div>
-      <div class="swiper-slide">Slide 7</div>
-      <div class="swiper-slide">Slide 8</div>
-      <div class="swiper-slide">Slide 9</div>
-      <div class="swiper-slide">Slide 10</div>
+      <div class="swiper-slide"><img src="images/h_detail/01/01.jpg" alt=""></div>
+      <div class="swiper-slide"><img src="images/h_detail/01/02.jpg" alt=""></div>
+      <div class="swiper-slide"><img src="images/h_detail/01/03.jpg" alt=""></div>
+      <div class="swiper-slide"><img src="images/h_detail/01/04.jpg" alt=""></div>
+      <div class="swiper-slide"><img src="images/h_detail/01/05.jpg" alt=""></div>
+      <div class="swiper-slide"><img src="images/h_detail/01/01.jpg" alt=""></div>
+      <div class="swiper-slide"><img src="images/h_detail/01/02.jpg" alt=""></div>
+      <div class="swiper-slide"><img src="images/h_detail/01/03.jpg" alt=""></div>
+      <div class="swiper-slide"><img src="images/h_detail/01/04.jpg" alt=""></div>
+      <div class="swiper-slide"><img src="images/h_detail/01/05.jpg" alt=""></div>
     </div>
     <!-- Add Pagination -->
     <div class="swiper-pagination"></div>
