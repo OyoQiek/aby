@@ -3,7 +3,7 @@
         <!-- 头部 -->
         <div class="fixed_top">
             <div class="pr">
-                <div><img src="images/back.jpg" alt=""></div>
+                <div>&lt;</div>
                 <div><span class="iconfont icon-aixin collect"></span></div>
             </div>
         </div>
@@ -41,6 +41,10 @@
             <div class="fygl_info">
                 <HouseFygs/>
             </div>
+        </div>
+        <!-- 摘要 -->
+        <div class="abstract">
+            
         </div>
     </div>
 </template>
@@ -83,13 +87,13 @@ export default {
     }
     .fixed_top .pr div:first-child{
         left: 20px;
-    }
-    .fixed_top .pr div:first-child img{
-        width: 32px;
-        height: 32px;
+        color: #fff;
+        cursor: pointer;
+        padding: 8px;
+        margin-top: -8px;
+        font-size: 20px;
     }
     .fixed_top .pr div:last-child{
-        background: rgba(0,0,0,.35);
         width: 32px;
         height: 32px;
         border-radius: 50%;
@@ -97,7 +101,9 @@ export default {
         color: #fff;
         right: 20px;
     }
-
+    .fixed_top .pr div:last-child span{
+        font-size: 20px;
+    }
     /* 房源基本信息 */
     .base{
         padding: 16px 24px;
