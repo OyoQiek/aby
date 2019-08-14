@@ -43,8 +43,9 @@
             </div>
         </div>
         <!-- 摘要 -->
-        <div class="abstract">
+        <div class="abstract base">
             <h2>摘要</h2>
+            <div>摘要内容.............................................................</div>
         </div>
     </div>
 </template>
@@ -54,7 +55,7 @@ import HouseFygs from '../../components/hdetail/house_fygs'
 export default {
     components:{
         Carousel,
-        HouseFygs
+        HouseFygs,
     },
 }
 </script>
@@ -190,5 +191,8 @@ export default {
     .fangyuangailan .icon_notice ul li~li{
         margin-left: 20px;
     }
-    
+    /* 摘要 */
+    .abstract{
+        margin-top: 1px;
+    }
 </style>
