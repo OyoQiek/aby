@@ -102,6 +102,11 @@ export default {
     .base{
         padding: 16px 24px;
         background: #fff;
+        color: #484848;
+    }
+    .base h2{
+        font-size: 18px;
+        margin-bottom: 20px;
     }
     .baseinfo{
         color: #484848;
@@ -167,10 +172,6 @@ export default {
     /* 房源概览 */
     .fangyuangailan{
         margin-top: 1px;
-    }
-    .fangyuangailan h2{
-        font-size: 18px;
-        margin-bottom: 20px;
     }
     .fangyuangailan .icon_notice ul{
         display: flex;
