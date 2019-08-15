@@ -48,6 +48,32 @@
             <div>摘要内容..........................................................asdsadsadsadasdsadasdasda.........</div>
             <router-link to="/HDetail/abstract" class="abstract_view">查看详情</router-link>
         </div>
+        <!-- 评价 -->
+        <div class="remark base">
+            <h2>评价</h2>
+            <div class="remark_star_w">
+                <div>   
+                    <span class="remark_star"></span>
+                    <span class="remark_star"></span>
+                    <span class="remark_star"></span>
+                    <span class="remark_star"></span>
+                    <span class="remark_star"></span>
+                </div>
+            </div>
+            <div class="remark_user">
+                <div>
+                    <img src="images/h_detail/01/01.jpg" class="remark_head_pic" alt="">
+                    <div>
+                        <p>扩达</p>
+                        <span>2019年8月</span>
+                    </div>
+                </div>
+                <div>
+                    老板很负责,房子热水24小时供应,还有一个超大的投影仪,还有一个蓝牙音箱让我高兴坏了,对于喜欢听歌的我来说是真爱,床也很大两个人完全没有问题,一句话,老哥稳~
+                </div>
+                <router-link to="/HDetail/remark" class="remark_view">阅读全部评价</router-link>
+            </div>
+        </div>
         <!-- 服务设施 -->
         <div class="base server">
             <h2>设施/服务</h2>
@@ -221,5 +247,62 @@ export default {
     .server{
         margin-top: 5px;
         font-size: 14px;
+    }
+    /* 评论 */
+    .remark{
+        margin-top: 5px;
+    }
+            /* 这里来判断调整显示的星级 */
+    .remark .remark_star_w{
+        width: 75px;
+        height: 15px;
+        overflow: hidden;
+        margin-top: -10px;
+    }
+    .remark .remark_star_w div{
+        width: 75px;
+        height: 15px;                                                                                                        
+    }
+    .remark .remark_star_w div .remark_star{
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        background: url("../../../public/images/remark_star.png") repeat-x;
+        background-size: cover;
+    }
+    .remark .remark_user{
+        display: flex;
+        flex-flow: column nowrap;
+    }
+    .remark .remark_user div:nth-child(1){
+        display: flex;
+        flex-flow: row nowrap;
+        margin-top: 20px;
+    }
+    .remark .remark_user div:nth-child(1) img{
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        vertical-align: middle;
+    }
+    .remark .remark_user div:nth-child(1) div{
+        margin-left: 12px;
+        margin-top: -2px;
+    }
+    .remark .remark_user div:nth-child(1) div p{
+        font-size: 14px;
+        font-weight: bold;
+    }
+    .remark .remark_user div:nth-child(1) div span{
+        font-size: 12px;
+    }
+    .remark .remark_user div:nth-child(2){
+        font-size: 16px;
+        padding-bottom: 16px;
+    }
+    .remark .remark_user .remark_view{
+        color: #008489;
+        display: inline-block;
+        margin-top: 16px;
     }
 </style>
