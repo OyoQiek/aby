@@ -74,11 +74,60 @@
                 <router-link to="/HDetail/remark" class="remark_view">阅读全部评价</router-link>
             </div>
         </div>
-        <!-- 服务设施 -->
-        <div class="base server">
-            <h2>设施/服务</h2>
-            <div>
+        <!-- 房源位置 -->
+        <div class="base h_local">
+            <h2>房源位置</h2>
 
+        </div>
+        <!-- 服务设施 -->
+        <div class="server">
+            <h2>设施/服务</h2>
+            <div class="server_cont">
+                <div class="server_type">
+                    <div>
+                        <span class="iconfont icon-mendianliebiao"></span>
+                        入住服务
+                    </div>
+                    <ul>
+                        <li>可预订长期住宿</li>
+                        <li>独立入口</li>
+                        <li>可以存放行李</li>
+                    </ul>
+                </div>
+                <div class="server_type">
+                    <div>
+                        <span class="iconfont icon-wuxian"></span>
+                        基础设施
+                    </div>
+                    <ul>
+                        <li>空调</li>
+                        <li>洗衣机</li>
+                        <li>无线网络</li>
+                        <li>暖气</li>
+                    </ul>
+                </div>
+                <div class="server_type">
+                    <div>
+                        <span class="iconfont icon-yugang"></span>
+                        洗浴设施
+                    </div>
+                    <ul>
+                        <li>洗发水</li>
+                        <li>吹风机</li>
+                        <li>生活必需品</li>
+                        <li>热水</li>
+                    </ul>
+                </div>
+                <div class="server_type">
+                    <div>
+                        <span class="iconfont icon-canju"></span>
+                        厨房用品
+                    </div>
+                    <ul>
+                        <li>厨房</li>
+                    </ul>
+                </div>
+                <router-link to="/HDetail/server" class="server_view">查看全部</router-link>
             </div>
         </div>
     </div>
@@ -244,10 +293,7 @@ export default {
         display: inline-block;
         margin-top: 16px;
     }
-    .server{
-        margin-top: 5px;
-        font-size: 14px;
-    }
+    
     /* 评论 */
     .remark{
         margin-top: 5px;
@@ -304,5 +350,64 @@ export default {
         color: #008489;
         display: inline-block;
         margin-top: 16px;
+    }
+    /* 房源位置 */
+    .h_local{
+        margin-top: 5px;
+    }
+
+    /* 服务设施 */
+    .server{
+        margin-top: 5px;
+        font-size: 14px;
+        padding: 16px 0px;
+        background: #fff;
+        color: #484848;
+    }
+    .server h2{
+        font-size: 18px;
+        padding: 0 24px;
+    }
+    .server .server_type{
+        border-bottom: 1px solid #ddd;
+        padding: 10px 24px;
+        display: flex;
+    }
+    .server .server_cont .server_type:nth-child(4){
+        border-bottom: 0;
+    }
+    .server .server_type div:nth-child(1){
+        display: inline-block;
+        font-size: 10px;
+        font-weight: bold;
+    }
+    .server .server_type div:nth-child(1) span{
+        display: block;
+        text-align: center;
+        font-size: 25px;
+        font-weight: 500;
+    }
+    .server .server_type ul{
+        padding: 5px 0;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: space-between;
+        align-items: stretch;
+        height: 40px;
+        margin-left: 30px;
+    }
+    .server .server_type ul li{
+        background: url("../../../public/images/right.png") no-repeat left;
+        background-size: contain;
+        padding-left: 20px;
+        font-size: 12px;
+        width: 100px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    .server .server_cont .server_view{
+        color: #008489;
+        display: inline-block;
+        margin-left: 24px;
     }
 </style>
