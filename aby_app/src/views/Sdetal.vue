@@ -3,7 +3,7 @@
            <!-- 头部 -->
         <div class="fixed_top" :style="divstyle">
             <div class="pr">
-                <div>&lt;</div>
+                <div><span class="iconfont icon-zuo"></span></div>
                 <div><span class="iconfont icon-aixin collect"></span></div>
             </div>
         </div>
