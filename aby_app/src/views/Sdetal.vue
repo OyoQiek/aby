@@ -57,26 +57,38 @@
                             <span>99</span><span class="iconfont icon-zansel" ></span>
                         </div>
                     </div>
-                    <p class="plnr">有谁像我被图片吸引过来的</p>
+                    <p class="plnra">有谁像我被图片吸引过来的</p>
                 </div>
                 
              
-                <div class="btn">
+                <div class="btn" @click="tcplnr">
                     <a href="javescript:">查看全部评论</a>
                 </div>
             </div>
     
         </div>
     
-         <div class="tabbar" @click="tcpl">
-                <div>添加评论</div>
+         <div class="tabbar">
+                <div @click="tcpl">添加评论</div>
                 <div> <span>836个赞</span>
                 <span class="iconfont icon-zansel"></span></div>
          </div>
          <div class="tcpl">
              <div>
-                <span class="iconfont icon-zansel"></span>
+                <span class="iconfont icon-chacha" @click="closepl"></span>
                 <span>提交</span>
+             </div>
+             <div>
+                <textarea name="" id="" placeholder="说点什么..."></textarea>
+             </div>
+         </div>
+          <div class="plnr">
+             <div>
+                <span>71条评论</span>
+                <span>添加评论</span>
+             </div>
+             <div>
+                
              </div>
          </div>
         
@@ -114,7 +126,17 @@ export default {
         tcpl(){
             var plk=document.querySelector(".tcpl");
             plk.style.height="100%"
-        }
+            var srk=document.querySelector(".tcpl textarea");
+            srk.focus();
+        },
+        closepl(){
+             var plk=document.querySelector(".tcpl");
+            plk.style.height="0"
+        },
+        tcplnr(){
+            var plk=document.querySelector(".plnr");
+            plk.style.width="100%"
+        },
     },
     components:{
         Carousel,
@@ -129,7 +151,7 @@ export default {
         background: transparent;
         width: 100%;
         height: 60px;
-        z-index: 9;
+        z-index: 9; 
         /* 
         position:fixed;
         background:#fff;
@@ -243,7 +265,7 @@ export default {
         color:cadetblue;
         font-size: 14px;
     }
-    .pl .plnr{
+    .pl .plnra{
         color:#484848;
         font-size: 14px;
     }
@@ -277,7 +299,35 @@ export default {
         background: #fff;
         width: 100%;
         height: 0px;
-        transition:height .3s linear;
+        transition:height .2s linear;
+        overflow: hidden;
+    }
+    .tcpl div:first-child{
+        display: flex;
+        justify-content: space-between;
+        margin:25px 25px;
+        font-size: 14px;
+    }
+    .tcpl div:nth-child(2){
+        box-sizing: border-box;
+        padding: 0 25px;
+    }
+    .tcpl div textarea{
+        border: 0;
+        outline: 0;
+        font-size: 16px;
+        width: 100%;
+        height:70vh;
+    }
+     .plnr{
+        position: fixed;
+        z-index: 225;
+        top: 0;
+        right:0;
+        background: #fff;
+        width: 0;
+        height: 100%;
+        transition:width .3s linear;
         overflow: hidden;
     }
 </style>
