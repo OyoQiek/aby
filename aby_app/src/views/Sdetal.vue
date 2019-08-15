@@ -46,7 +46,7 @@
             <div class="pl">
                 <div class="pl-title">
                     <h4>70条评论</h4>
-                    <span><a href="javascript:">写评论</a></span>
+                    <span @click="tcpl"><a href="javascript:">写评论</a></span>
                 </div>
                 <div>
                     <div>
@@ -65,12 +65,21 @@
                     <a href="javescript:">查看全部评论</a>
                 </div>
             </div>
+    
         </div>
-         <div class="tabbar">
+    
+         <div class="tabbar" @click="tcpl">
                 <div>添加评论</div>
                 <div> <span>836个赞</span>
                 <span class="iconfont icon-zansel"></span></div>
          </div>
+         <div class="tcpl">
+             <div>
+                <span class="iconfont icon-zansel"></span>
+                <span>提交</span>
+             </div>
+         </div>
+        
     </div>
 </template>
 <script>
@@ -81,7 +90,8 @@ export default {
         return {
             divstyle:{
                 background:"transparent",
-                borderBottom:0
+                borderBottom:0,
+                color:"#000"
             }
         }
     },
@@ -91,7 +101,7 @@ export default {
     methods: {
         handleScroll(){
             let st=Math.max(document.body.scrollTop || document.documentElement.scrollTop);
-            var nav=document.querySelector(".fixed_top");
+            var span=document.querySelectorAll(".pr span")
             if(st>200){
                 this.divstyle.background="#fff"
                 this.divstyle.borderBottom="1px solid #999"
@@ -100,6 +110,10 @@ export default {
                 this.divstyle.borderBottom=0
             }
 
+        },
+        tcpl(){
+            var plk=document.querySelector(".tcpl");
+            plk.style.height="100%"
         }
     },
     components:{
@@ -131,13 +145,12 @@ export default {
         top: 14px;
         cursor: pointer;
     }
-    .fixed_top .pr div:first-child{
-        left: 20px;
+    .fixed_top .pr div:first-child span{
         color: #fff;
         cursor: pointer;
-        padding: 8px;
+        padding: 20px;
         margin-top: -8px;
-        font-size: 20px;
+        font-size: 26px;
     }
     .fixed_top .pr div:last-child{
         width: 32px;
@@ -241,7 +254,7 @@ export default {
         height: 60px;
         background: #fff;
         border-top: 1px solid #999;
-        z-index: 999;
+        z-index: 111;
         display: flex;
         align-items: center;
         align-items: center;
@@ -256,5 +269,15 @@ export default {
     }
     .tabbar div:last-child span:first-child{
         margin-right: 10px;
+    }
+    .tcpl{
+        position: fixed;
+        z-index: 222;
+        bottom:0;
+        background: #fff;
+        width: 100%;
+        height: 0px;
+        transition:height .3s linear;
+        overflow: hidden;
     }
 </style>
