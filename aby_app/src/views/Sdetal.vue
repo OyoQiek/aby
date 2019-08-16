@@ -71,7 +71,7 @@
          <div class="tabbar">
                 <div @click="tcpl">添加评论</div>
                 <div> <span>836个赞</span>
-                <span class="iconfont icon-zansel"></span></div>
+                <span class="iconfont icon-zuo"></span></div>
          </div>
          <div class="tcpl">
              <div>
