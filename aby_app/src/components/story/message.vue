@@ -5,7 +5,7 @@
             <div class="message">
                 <div class="imga">
                     <img src="../../../public/images/story/tp.jpg" alt="">
-                    <span class="iconfont icon-zansel"></span>
+                    <span class="iconfont icon-dianzan1"></span>
                     <div>房源</div>
                 </div>
                 
@@ -15,7 +15,7 @@
                          <img src="../../../public/images/story/tx.jpg" alt="">
                     </div>
                     <div>
-                        <span class="iconfont icon-zansel"></span>
+                        <span class="iconfont icon-dianzan1"></span>
                         <span>99+</span>
                     </div>
                     
@@ -41,6 +41,7 @@
                 <a href="javascript:">显示更多故事</a>
             </div>
         </div>    
+        
     </div>
     
 </template>
@@ -55,7 +56,7 @@ export default {
 </script>
 <style scoped>
     #container{
-        margin: 40px 20px;
+        margin: 150px 20px;
     }
     .m-list{
         display: flex;
@@ -80,17 +81,16 @@ export default {
         display: flex;
         align-items: center;
     }
-    .zan img{
-        width: 22px;
-    }
+
     .zan div img{
         border-radius: 50%;
+         width: 22px;
         margin-right: 15px;
         margin-top:5px;
     }
     .zan div~div span:first-child{
         color:#666;
-        font-size: 18px;
+        font-size: 14px;
         vertical-align: middle;
         margin:0 2px;
     }
@@ -121,7 +121,7 @@ export default {
         position: absolute;
         top:10px;
         right:10px;
-        font-size: 25px;
+        font-size: 20px;
         color:#fff;
     }
     .imga div{
