@@ -3,7 +3,7 @@
         <!-- 头部 -->
         <div class="fixed_top">
             <div class="pr">
-                <div><span class="iconfont icon-zuo"></span></div>
+                <div><span class="iconfont icon-zuo top_back"></span></div>
                 <div><span class="iconfont icon-aixin collect"></span></div>
             </div>
         </div>
@@ -161,7 +161,13 @@
                     <li class="know_list">禁止吸烟</li>
                 </ul>
             </div>
-            
+        </div>
+        <!-- 底部 -->
+        <div class="base bottom_bar">
+            <div>
+                <span>￥285<s>￥285</s><i>/晚</i></span>
+            </div>
+            <router-link to="/HDetail/reserve" class="reserve">立即预定</router-link>
         </div>
     </div>
 </template>
@@ -169,9 +175,48 @@
 import Carousel from '../../components/carousel'
 import HouseFygs from '../../components/hdetail/house_fygs'
 export default {
+    data() {
+        return {
+            st:240,
+        }
+    },
     components:{
         Carousel,
         HouseFygs,
+    },
+    created() {
+        window.addEventListener("scroll",this.watchScroll,true);
+    },
+    destroyed() {
+        window.removeEventListener("scroll",this.watchScroll)
+    },
+    methods: {
+        watchScroll(){
+            var top=Math.max(document.body.scrollTop || document.documentElement.scrollTop);
+            var div=document.querySelector(".fixed_top");
+            var topBack=document.querySelector(".top_back");
+            var topLike=document.querySelector(".collect");
+            if(top<240){
+                div.style.position="absolute";
+                div.style.top=0;
+                div.style.background="transparent";
+                div.style.height="60px";
+                div.style.boxShadow="none";
+                topBack.style.color="#fff";
+                topLike.style.color="#fff";
+            }else if(top>this.st && top>240){
+                div.style.height="0px"
+            }else if(top<this.st && top>240){
+                div.style.position="fixed";
+                div.style.top=0;
+                div.style.background="#fff";
+                div.style.height="60px";
+                div.style.boxShadow=" 0 0 10px 0 rgba(0, 0, 0, .3)";
+                topBack.style.color="#484848";
+                topLike.style.color="#484848";
+            }
+            this.st=top+1;
+        }
     },
 }
 </script>
@@ -187,6 +232,8 @@ export default {
         width: 100%;
         height: 60px;
         z-index: 9;
+        transition: all .3s linear;
+        overflow: hidden;
         /* 
         position:fixed;
         background:#fff;
@@ -213,6 +260,7 @@ export default {
     .fixed_top .pr div:first-child span{
         font-size: 20px;
         display: inline-block;
+        font-weight: bold;
     }
     .fixed_top .pr div:last-child{
         width: 32px;
@@ -227,7 +275,7 @@ export default {
     }
     /* 房源基本信息 */
     .base{
-        padding: 16px 24px;
+        padding: 16px 5%;
         background: #fff;
         color: #484848;
     }
@@ -458,6 +506,7 @@ export default {
     /* 入住须知 */
     .into_know{
         margin-top: 5px;
+        margin-bottom: 60px;
     }
     .into_know div h3{
         font-size: 14px;
@@ -493,5 +542,38 @@ export default {
         width:50%;
         margin-top: 5px;
         box-sizing: border-box;
+    }
+
+    /* 底部模块 */
+    .bottom_bar{
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, .3);
+        height: 65px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-sizing: border-box;
+    }
+    .bottom_bar div:first-child span{
+        font-size: 22px;
+    }
+    .bottom_bar div:first-child span s{
+        font-size: 12px;
+    }
+    .bottom_bar div:first-child span i{
+        font-size: 14px;
+    }
+    .bottom_bar .reserve{
+        background: #ff5a5f;
+        color: #fff;
+        width: 160px;
+        height: 48px;
+        text-align: center;
+        line-height: 48px;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
     }
 </style>
