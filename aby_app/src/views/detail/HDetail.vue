@@ -77,7 +77,17 @@
         <!-- 房源位置 -->
         <div class="base h_local">
             <h2>房源位置</h2>
-
+            <div class="h_local_info">
+                <div>
+                    <span>杭州市</span>
+                    <span>，浙江省</span>
+                    <span>，中国</span>
+                </div>
+                <span><img src="images/map_local.png" alt=""></span>
+            </div>
+            <div class="h_local_cont">
+                房源的地理位置相当优越,首先毗邻太古里,从小区的后门出去就1min直达太古里,不仅有高大上的各国餐厅还有各种特色小吃,晚上逛逛太古里,在里面的小酒吧小酌一杯感受气氛非常的美妙｡3min到达ifs国际金融中心里面各种大牌琳琅满目,ifs旁边就是熊猫班车,每天滚动发车可到达各个景点,您也可以选择坐地铁都是不错的选择｡
+            </div>
         </div>
         <!-- 服务设施 -->
         <div class="server">
@@ -127,8 +137,31 @@
                         <li>厨房</li>
                     </ul>
                 </div>
-                <router-link to="/HDetail/server" class="server_view">查看全部</router-link>
+                <!-- <router-link to="/HDetail/server" class="server_view">查看全部</router-link> -->
             </div>
+        </div>
+        <!-- 入住须知 -->
+        <div class="base into_know">
+            <h2>入住须知</h2>
+            <div>
+                <h3>入住与退房</h3>
+                <span>14:00-21:00/13:00</span>
+            </div>
+            <div>
+                <h3>取消政策</h3>
+                <div>在入住前一天2：00PM前取消预定可获得全额退款</div>
+            </div>
+            <div>
+                <h3>入住须知</h3>
+                <ul>
+                    <li class="know_list">适合儿童(2-12岁)</li>
+                    <li class="know_list">适合婴幼儿(2岁以下)</li>
+                    <li class="know_list">允许举办派对和活动</li>
+                    <li class="know_list">不允许携带宠物</li>
+                    <li class="know_list">禁止吸烟</li>
+                </ul>
+            </div>
+            
         </div>
     </div>
 </template>
@@ -355,7 +388,19 @@ export default {
     .h_local{
         margin-top: 5px;
     }
-
+    .h_local .h_local_info{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .h_local .h_local_info img{
+        vertical-align: middle;
+        margin-right: 20px;
+    }
+    .h_local .h_local_cont{
+        margin-top: 20px;
+        text-indent: 28px;
+    }
     /* 服务设施 */
     .server{
         margin-top: 5px;
@@ -409,5 +454,44 @@ export default {
         color: #008489;
         display: inline-block;
         margin-left: 24px;
+    }
+    /* 入住须知 */
+    .into_know{
+        margin-top: 5px;
+    }
+    .into_know div h3{
+        font-size: 14px;
+    }
+    .into_know div:nth-child(2) span{
+        font-size: 13px;
+        display: inline-block;
+        margin: 10px 0;
+    }
+    .into_know div div{
+        font-size: 13px;
+        margin: 10px 0;
+    }
+    .into_know div:nth-child(4) ul{
+        font-size: 12px;
+        margin: 10px 0;
+        display: flex;
+        flex-flow: row wrap;
+    }
+    /* 入住须知里的勾勾背景和叉叉背景样式 */
+    .into_know div:nth-child(4) ul li.know_list{
+        background: url("../../../public/images/right.png") no-repeat left;
+        background-size: contain;
+        padding-left: 20px;
+        width:50%;
+        margin-top: 5px;
+        box-sizing: border-box;
+    }
+    .into_know div:nth-child(4) ul li.nknow_list{
+        background: url("../../../public/images/right.png") no-repeat left;
+        background-size: contain;
+        padding-left: 20px;
+        width:50%;
+        margin-top: 5px;
+        box-sizing: border-box;
     }
 </style>
