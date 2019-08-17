@@ -1,34 +1,39 @@
 <template>
     <div>
-        <div id="search">
-            <input type="text" placeholder="搜索杭州的美食故事">
-            <span class="iconfont icon-iconset0157"></span>
-        </div>
-        <div id="nav">
-          <mt-navbar v-model="selected">
-            <mt-tab-item id="1">名宿</mt-tab-item>
-            <mt-tab-item id="2">美食</mt-tab-item>
-            <mt-tab-item id="3">景点</mt-tab-item>
-            <mt-tab-item id="4">艺术</mt-tab-item>
-          </mt-navbar>
+        <div class="container">
+            <div id="search">
+                <input type="text" placeholder="搜索杭州的美食故事">
+                <span class="iconfont icon-iconset0157"></span>
+            </div>
+            <div id="nav">
+                <mt-navbar v-model="selected">
+                    <mt-tab-item id="d1">名宿</mt-tab-item>
+                    <mt-tab-item id="d2">美食</mt-tab-item>
+                    <mt-tab-item id="d3">景点</mt-tab-item>
+                    <mt-tab-item id="d4">艺术</mt-tab-item>
+                </mt-navbar>
+            </div> 
         </div>
         <div id="nav-page">
              <mt-tab-container v-model="selected">
-                <mt-tab-container-item id="1">
+                <mt-tab-container-item id="d1">
                     <message></message>
                 </mt-tab-container-item>
-                <mt-tab-container-item id="2">
-                    <h4>名宿</h4>
+                <mt-tab-container-item id="d2">
+                    asdsa
                 </mt-tab-container-item>
-                <mt-tab-container-item id="3">
-                    <h4>美食</h4>
+                <mt-tab-container-item id="d3">
+                    <message></message>
                 </mt-tab-container-item>
-                <mt-tab-container-item id="4">
-                   <h4>景点</h4>
+                <mt-tab-container-item id="d4">
+                   sadsadsa
                 </mt-tab-container-item>
             </mt-tab-container>
         </div>
-           
+        <div class="write_story">
+            <span>写故事</span>
+            <span class="iconfont icon-jia "></span>
+        </div>   
     </div>    
 </template>
 <script>
@@ -36,15 +41,22 @@ import Message from "../components/story/message.vue"
 export default {
      data(){
         return{
-            selected:"1"
+            selected:"d1"
         }
     },
     components:{
-        Message
+        Message,
     }
 }
 </script>
 <style scoped>
+
+    .container{
+        position: fixed;
+        width: 100%;
+        z-index: 888;
+        background: #fff;
+    }
     #search{
         position: relative;
     }
@@ -71,7 +83,26 @@ export default {
         border-bottom: 2px solid #000;
         color: #000;
     }
-    nav-page{
-        margin: 30px 10px;
+
+    .write_story{
+        background: #fff;
+        position: fixed;
+        bottom: 80px;
+        left:38%;
+        padding: 8px 15px;
+        border-radius: 50px;
+        box-shadow: 0 0 15px 1px #999;
+    }
+    .write_story:hover{
+        background: #d3d2d2;
+    }
+    .write_story span:first-child{
+        font-size: 13px;
+        margin-right: 10px;
+        columns: #484848;
+    }
+    .write_story span:last-child{
+        color:#484848;
+        font-size:17px;
     }
 </style>
