@@ -56,7 +56,7 @@ export default {
 </script>
 <style scoped>
     #container{
-        margin: 150px 20px;
+        margin: 150px 20px  90px 20px;
     }
     .m-list{
         display: flex;

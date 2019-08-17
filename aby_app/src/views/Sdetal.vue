@@ -32,7 +32,7 @@
                 <p>这里原生态的一切与世隔绝，房东说“这里的生活，教会了我什么才是生命中最重要的事”。</p>
                 <p> 在这样的地方住几天，大概可以算是我来泰国以来最最特别的旅行体验了～</p></div>
                 <div>
-                    <span class="iconfont icon-zansel"></span>
+                    <span class="iconfont icon-dianzan"></span>
                     <span>833人已赞</span>
                 </div>
             </div>
@@ -244,8 +244,9 @@ export default {
         margin-bottom: 25px;
     }
     .fy_page div:last-child span:first-child{
-        font-size: 18px;
+        font-size: 14px;
         margin-right: 10px;
+        color:#555555
     }
      .fy_page div:last-child span:last-child{
         font-size: 12px;
