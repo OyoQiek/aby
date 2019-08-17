@@ -3,6 +3,9 @@ const mysql=require('mysql');
 const bodyParser=require('body-parser');
 const cors=require('cors');
 const session=require('express-session');
+const user=require("./router/user");
+const house=require("./router/house");
+
 var app=express();
 app.use(bodyParser.urlencoded({
     extended:false
@@ -19,3 +22,6 @@ app.use(session({
 }));
 app.use(express.static("public"));
 app.listen(3000);
+app.use("/user",user);
+app.use("/house",house);
+
