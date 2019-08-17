@@ -13,9 +13,9 @@ app.use(cors({
 }));
 
 app.use(session({
-    secret:"°²È«128Î»×Ö·û´®",//°²È«×Ö·û´®
-    resave:true,//ÇëÇóÊ±¸üĞÂÊı¾İ
-    saveUninitialized:true,//±£´æ³õÊ¼Êı¾İ
+    secret:"å®‰å…¨128ä½å­—ç¬¦ä¸²",//å®‰å…¨å­—ç¬¦ä¸²
+    resave:true,//è¯·æ±‚æ—¶æ›´æ–°æ•°æ®
+    saveUninitialized:true,//ä¿å­˜åˆå§‹æ•°æ®
 }));
 app.use(express.static("public"));
 app.listen(3000);
