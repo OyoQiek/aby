@@ -3,8 +3,8 @@
            <!-- 头部 -->
         <div class="fixed_top" :style="divstyle">
             <div class="pr">
-                <div><span class="iconfont icon-zuo"></span></div>
-                <div><span class="iconfont icon-aixin collect"></span></div>
+                <div><span :style="spanstyle" class="iconfont icon-zuo"></span></div>
+                <div><span :style="spanstyle" class="iconfont icon-aixin collect"></span></div>
             </div>
         </div>
         <!-- 轮播图 -->
@@ -12,7 +12,7 @@
         <div id="page">
             <div class="fy_page">
                 <div>
-                    <p>清迈·房源</p>
+                    <p class="fybt">清迈·房源</p>
                     <h2>清迈有一家有“大象叫草服务”的名宿</h2>
                 </div>
                 <div class="zan">
@@ -54,7 +54,7 @@
                             <span>Hing</span><span>2018年8月8日</span>
                         </div>
                         <div>
-                            <span>99</span><span class="iconfont icon-zansel" ></span>
+                            <span>99</span><span class="iconfont icon-dianzan1" ></span>
                         </div>
                     </div>
                     <p class="plnra">有谁像我被图片吸引过来的</p>
@@ -71,7 +71,7 @@
          <div class="tabbar">
                 <div @click="tcpl">添加评论</div>
                 <div> <span>836个赞</span>
-                <span class="iconfont icon-zuo"></span></div>
+                <span class="iconfont icon-dianzan1"></span></div>
          </div>
          <div class="tcpl">
              <div>
@@ -82,15 +82,33 @@
                 <textarea name="" id="" placeholder="说点什么..."></textarea>
              </div>
          </div>
-          <div class="plnr">
-             <div>
-                <span>71条评论</span>
-                <span>添加评论</span>
-             </div>
-             <div>
-                
-             </div>
-         </div>
+        <div class="plnrk">
+            <div class="fh">
+                <span class="iconfont icon-zuo " @click="closeplnr"></span>
+            </div>
+        <div class="plnr">
+                <div class="plnrbt">
+                    <span>71条评论</span>
+                    <span @click="tcpl">添加评论</span>
+                </div>
+                <div class="pl_bottom">
+                    <div class="pl_page">
+                            <div>
+                                <img src="../../public/images/story/tx.jpg" alt="">
+                                <div>
+                                    <span>WX</span>
+                                    <span>昨天</span>
+                                </div>
+                            </div>
+                            <div class="dianzan">
+                                <span>99</span>
+                                <span class="iconfont icon-dianzan1"></span>
+                            </div>
+                    </div>
+                    <p>卧槽 真的好看。</p>
+                </div>
+            </div>
+        </div>
         
     </div>
 </template>
@@ -103,7 +121,9 @@ export default {
             divstyle:{
                 background:"transparent",
                 borderBottom:0,
-                color:"#000"
+            },
+            spanstyle:{
+                color:"#fff"
             }
         }
     },
@@ -113,13 +133,14 @@ export default {
     methods: {
         handleScroll(){
             let st=Math.max(document.body.scrollTop || document.documentElement.scrollTop);
-            var span=document.querySelectorAll(".pr span")
             if(st>200){
                 this.divstyle.background="#fff"
                 this.divstyle.borderBottom="1px solid #999"
+                this.spanstyle.color="#000"
             }else{
                 this.divstyle.background="transparent"
                 this.divstyle.borderBottom=0
+                this.spanstyle.color="#fff"
             }
 
         },
@@ -134,8 +155,12 @@ export default {
             plk.style.height="0"
         },
         tcplnr(){
-            var plk=document.querySelector(".plnr");
+            var plk=document.querySelector(".plnrk");
             plk.style.width="100%"
+        },
+         closeplnr(){
+             var plfh=document.querySelector(".plnrk")
+            plfh.style.width="0"
         },
     },
     components:{
@@ -213,6 +238,7 @@ export default {
     .fy_page div:nth-child(3) p{
         font-size: 15px;
         margin-bottom: 20px;
+        color:#484848;
     }
     .fy_page div:last-child{
         margin-bottom: 25px;
@@ -255,11 +281,10 @@ export default {
         margin-left:5px;
     }
     .pl .btn{
-        border-top:1px solid #999;
-        border-bottom:1px solid #999;
+        width: 30%;
         padding:12px 0;
-        margin-top:20px;
-        margin-bottom:100px;
+        margin-top:10px;
+        margin-bottom:80px;
     }
     .pl .btn a{
         color:cadetblue;
@@ -319,15 +344,68 @@ export default {
         width: 100%;
         height:70vh;
     }
-     .plnr{
+     .plnrk{
         position: fixed;
-        z-index: 225;
+        z-index: 200;
         top: 0;
         right:0;
         background: #fff;
         width: 0;
         height: 100%;
-        transition:width .3s linear;
-        overflow: hidden;
+        transition:width .1s linear;  
+    }
+    .plnrk div.fh span{
+        height: 60px;
+        width: 100%;
+        line-height: 60px;
+        font-size: 25px;
+        margin:0 20px;
+    }
+    .plnr{
+        margin:5px 25px;
+    }
+    .plnrk .pl_bottom{
+        padding-bottom: 20px;
+        border-bottom: 1px solid #999;
+    }
+    .plnrk .plnr .plnrbt{
+        border-bottom: 1px solid #999;
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 20px;
+        
+    }
+    .plnrk .plnr .plnrbt span:last-child{
+        color:rgb(83, 134, 136);
+    }
+    .plnrk .pl_page{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding:20px 0;
+    }
+    .plnrk .pl_page img{
+        width: 40px;
+        height:40px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+    .plnrk .pl_page div:first-child{
+        display: flex;
+    }
+    .plnrk .pl_page div div span:first-child{
+        display: block;
+        font-size:14px;
+        color:#484848;
+    }
+    .plnrk .pl_page div div span:last-child{
+        
+        font-size:10px;
+        color:#999;
+    }
+    .plnrk .pl_page div.dianzan span:first-child{
+        color:#484848;
+        font-size: 12px;
+        margin-right: 10px;
     }
 </style>

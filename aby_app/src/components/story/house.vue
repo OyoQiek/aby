@@ -56,6 +56,7 @@ export default {
     .fygs_infoc .fygl_border span{
         display: block;
         margin:5px 0;
+        color:#341e13
     }
     
     .fygs_infoc .fygl_border{
