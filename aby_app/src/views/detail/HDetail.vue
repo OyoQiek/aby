@@ -11,11 +11,12 @@
         <div style="height:240px;"> <carousel/> </div>
         <!-- 基本信息 -->
         <div class="baseinfo base">
-            <div class="title_top"><b>成都市</b> · <b>整套公寓</b></div>
-            <div class="title">【afterhours】九眼桥/春熙路/近地铁口公寓  Cozy studio near metro</div>
+            <div class="title_top" v-cloak><b>{{data.city}}</b> · <b>{{data.h_type}}</b></div>
+            <div class="title">{{data.title}}</div>
             <div class="info_tag">
                 <ul class="tags">
-                    <li class="grenn">新房源</li>
+                    <li class="grenn" :style="sh1">新房源</li>
+                    <li class="grenn" :style="sh2">超赞房东</li>
                     <li class="orange">整套房子</li>
                     <li class="huise">近地铁站</li>
                 </ul>
@@ -178,6 +179,13 @@ export default {
     data() {
         return {
             st:240,
+            data:[],
+            sh1:{
+                display:"inline-block"
+            },
+            sh2:{
+                display:"inline-block"
+            },
         }
     },
     components:{
@@ -186,11 +194,30 @@ export default {
     },
     created() {
         window.addEventListener("scroll",this.watchScroll,true);
+        this.load();
     },
     destroyed() {
         window.removeEventListener("scroll",this.watchScroll)
     },
     methods: {
+        load(){
+            this.axios.get(
+                "house/hdetail",
+                {
+                    params:{
+                        hid:1
+                    }
+                }).then(res=>{
+                    console.log(res.data.data[0]);
+                    this.data=res.data.data[0];
+                    if(!this.data.new_house){
+                        this.sh2.display="none"
+                    }
+                    if(!this.data.landlord){
+                        this.sh1.display="none"
+                    }
+                });
+        },
         watchScroll(){
             var top=Math.max(document.body.scrollTop || document.documentElement.scrollTop);
             var div=document.querySelector(".fixed_top");
@@ -216,7 +243,7 @@ export default {
                 topLike.style.color="#484848";
             }
             this.st=top+1;
-        }
+        },
     },
 }
 </script>
@@ -555,6 +582,7 @@ export default {
         justify-content: space-between;
         align-items: center;
         box-sizing: border-box;
+        z-index: 99;
     }
     .bottom_bar div:first-child span{
         font-size: 22px;

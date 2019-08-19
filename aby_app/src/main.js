@@ -10,10 +10,10 @@ import 'mint-ui/lib/style.css'
 import './font/iconfont.css'
 import 'swiper/dist/css/swiper.css'
 
-// axios.defaults.baseURL="http://127.0.0.1:3000/"
-// axios.defaults.withCredentials=true
+axios.defaults.baseURL="http://127.0.0.1:3000/"
+axios.defaults.withCredentials=true
+Vue.prototype.axios=axios
 Vue.use(MintUI)
-// Vue.use(axios)
 Vue.config.productionTip = false
 
 new Vue({
