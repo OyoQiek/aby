@@ -1,6 +1,5 @@
 <template>
     <div id="container">
-        <h1>有趣房东</h1>
         <div class="m-list">
             <div class="message">
                 <div class="imga">
@@ -25,21 +24,7 @@
                     </div>
                 </div>
             </div>
-            <div class="message">
-                <img src="../../../public/images/story/tp.jpg" alt="">
-                <p>清迈</p><span>清迈有一家有"大象叫早服务"的民宿</span>
-            </div>
-            <div class="message">
-                <img src="../../../public/images/story/tp.jpg" alt="">
-                <p>清迈</p><span>清迈有一家有"大象叫早服务"的民宿</span>
-            </div>
-            <div class="message">
-                <img src="../../../public/images/story/tp.jpg" alt="">
-                <p>清迈</p><span>清迈有一家有"大象叫早服务"的民宿</span>
-            </div>
-            <div class="btn">
-                <a href="javascript:">显示更多故事</a>
-            </div>
+           
         </div>    
         
     </div>
@@ -56,7 +41,7 @@ export default {
 </script>
 <style scoped>
     #container{
-        margin: 150px 20px  90px 20px;
+        margin: 0px 20px 0px 20px;
     }
     .m-list{
         display: flex;
@@ -97,22 +82,6 @@ export default {
       .zan div~div span:last-child{
         color:#000;
         font-size:12px;
-    }
-    .btn{
-        border:1px solid #008489;
-        width: 100%;
-        text-align: center;
-        padding:12px 0;
-        border-radius: 5px;
-        margin-top: 20px;
-    }
-    .btn a{
-        color:#008489;
-        font-size: 14px;
-        font-weight: bold;
-    }
-    .btn a:hover{
-        color:#089ca1;
     }
     .imga{
         position: relative;

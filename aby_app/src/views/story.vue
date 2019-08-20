@@ -17,19 +17,24 @@
         <div id="nav-page">
              <mt-tab-container v-model="selected">
                 <mt-tab-container-item id="d1">
-                    <message></message>
+                     <h1>有趣房东</h1>
+                      <message></message>
+                     <div class="btn">
+                        <a href="javascript:">显示更多故事</a>
+                     </div>
                 </mt-tab-container-item>
                 <mt-tab-container-item id="d2">
                     asdsa
                 </mt-tab-container-item>
                 <mt-tab-container-item id="d3">
-                    <message></message>
+                  sdasd
                 </mt-tab-container-item>
                 <mt-tab-container-item id="d4">
                    sadsadsa
                 </mt-tab-container-item>
             </mt-tab-container>
         </div>
+
         <div class="write_story" @click="tcpl">
             <span >写故事</span>
             <span class="iconfont icon-jia "></span>
@@ -195,5 +200,24 @@ export default {
         line-height: 20px;
         font-size:14px;
          height: 200px;
+    }
+    #nav-page h1{
+        margin-top: 150px;
+        margin-left: 5%;
+    }
+    .btn{
+        border: 1px solid #008489;
+        padding: 12px 0;
+        text-align: center;
+        border-radius: 5px;
+        margin: 5% 5%;
+    }
+    .btn a{
+        color:#008489;
+        font-size: 14px;
+        font-weight: bold;
+    }
+    .btn a:hover{
+        color:#089ca1;
     }
 </style>

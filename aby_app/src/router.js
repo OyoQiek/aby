@@ -8,6 +8,8 @@ import Remark from './components/hdetail/remark'
 import HServer from './components/hdetail/server'
 import Home from './views/index.vue'
 import Reserve from './components/hdetail/reserve'
+import Wish from './views/Wish.vue'
+import Login from './views/Login.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -20,5 +22,7 @@ export default new Router({
     {path:"/HDetail/server",component:HServer},
     {path:"/Home",component:Home},
     {path:"/HDetail/reserve",component:Reserve},
+    {path:"/Wish",component:Wish},
+    {path:"/Login",component:Login}
   ]
 })
