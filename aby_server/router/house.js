@@ -5,11 +5,23 @@ const pool=require("../pool");
 //房源详情
 router.get("/hdetail",(req,res)=>{
     var hid=req.query.hid;
-    var sql=`select * from aby_house where hid=?`;
+    var sql=`select * from aby_house inner join aby_Tags on aby_house.hid=aby_Tags.hid where aby_house.hid=?`;
     pool.query(sql,[hid],(err,result)=>{
         if(err) throw err;
+        var data=[];
+        data.length=2;
         if(result.length){
-            res.send({code:1,msg:"查询成功",data:result});
+            data[0]=result;
+            sql=`select * from aby_remark where hid=?`;
+            pool.query(sql,[hid],(err,result1)=>{
+                if(err) throw err;
+                if(result1.length>0){
+                    data[1]=result1;
+                    res.send({code:1,msg:"查询成功",data:data});
+                }else{
+                    res.send({code:1,msg:"查询成功",data:data});
+                }
+            })
         }else{
             res.send({code:-1,msg:"查询失败",data:""});
         }

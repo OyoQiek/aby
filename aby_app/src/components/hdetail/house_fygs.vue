@@ -8,19 +8,12 @@
                 <div>独自使用整个空间</div>
             </div>
         </div>
-        <div class="swiper-slide">
+        <div class="swiper-slide" v-for="(item,index) of fygl" :key="index">
             <div class="fygl_border">
-                <div>卧室1</div>
+                <div>{{item[0]}}</div>
                 <div><span class="iconfont icon-woshi"></span></div>
-                <div>独自使用整个空间</div>
+                <div>{{item[1]}}</div>
             </div>
-        </div>
-        <div class="swiper-slide">
-            <div class="fygl_border">
-                <div>卧室2</div>
-                <div><span class="iconfont icon-woshi"></span></div>
-                <div>独自使用整个空间</div>
-            </div>            
         </div>
     </div>
   </div>
@@ -29,12 +22,24 @@
 <script>
 import Swiper from 'swiper'
 export default {
-  mounted() {
-      new Swiper('.fygs_infoc', {
-            slidesPerView: 'auto',
-            spaceBetween: 30,
-        });
-  },
+    data() {
+        return {
+        }
+    },
+    mounted() {
+        new Swiper('.fygs_infoc', {
+                slidesPerView: 'auto',
+                spaceBetween: 30,
+            });
+    },
+    props:["fygl"],
+    watch: {
+        fygl(){
+            for(var i=0;i<this.fygl.length;i++){
+                this.fygl[i]=this.fygl[i].split("/")
+            }
+        }
+    },
 }
 </script>
 <style scoped>

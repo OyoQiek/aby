@@ -15,10 +15,10 @@
             <div class="title">{{data.title}}</div>
             <div class="info_tag">
                 <ul class="tags">
-                    <li class="grenn" :style="sh1">新房源</li>
-                    <li class="grenn" :style="sh2">超赞房东</li>
+                    <li class="green" :style="sh1">新房源</li>
+                    <li class="green" :style="sh2">超赞房东</li>
                     <li class="orange">整套房子</li>
-                    <li class="huise">近地铁站</li>
+                    <li class="huise" v-for="(item,index) of tags" :key="index">{{item}}</li>
                 </ul>
             </div>
         </div>
@@ -26,7 +26,7 @@
         <div class="base youhui">
             <div class="youhui_bg">
                 <div><img src="images/h_detail_notice.gif" alt=""></div>
-                <div><b>享受8月1日-8月15日期间的9折优惠</b>在2天内完成预定,锁定现时好价</div>
+                <div><b>{{data.h_b_discount}}</b>{{data.h_discount}}</div>
             </div>
         </div>
         <!-- 房源概览 -->
@@ -34,20 +34,20 @@
             <h2>房源概览</h2>
             <div class="icon_notice">
                 <ul>
-                    <li><span class="iconfont icon-icon-p_lianxirenguanli"></span><i>2</i>位房客</li>
-                    <li><span class="iconfont icon-woshi"></span><i>1</i>间卧室</li>
-                    <li><span class="iconfont icon-woshi1"></span><i>1</i>张床</li>
+                    <li><span class="iconfont icon-icon-p_lianxirenguanli"></span><i>{{data.h_info_member}}</i>位房客</li>
+                    <li><span class="iconfont icon-woshi"></span><i>{{data.h_info_rooms}}</i>间卧室</li>
+                    <li><span class="iconfont icon-woshi1"></span><i>{{data.h_info_beds}}</i>张床</li>
                 </ul>
             </div>
             <div class="fygl_info">
-                <HouseFygs/>
+                <HouseFygs :fygl="fygl"/>
             </div>
         </div>
         <!-- 摘要 -->
         <div class="abstract base">
             <h2>摘要</h2>
-            <div>摘要内容..........................................................asdsadsadsadasdsadasdasda.........</div>
-            <router-link to="/HDetail/abstract" class="abstract_view">查看详情</router-link>
+            <div>{{data.detail}}</div>
+            <router-link :to="`/HDetail/abstract/${data.detail}`" class="abstract_view">查看详情</router-link>
         </div>
         <!-- 评价 -->
         <div class="remark base">
@@ -65,12 +65,12 @@
                 <div>
                     <img src="images/h_detail/01/01.jpg" class="remark_head_pic" alt="">
                     <div>
-                        <p>扩达</p>
-                        <span>2019年8月</span>
+                        <p>{{runame}}</p>
+                        <span>{{rr_time}}</span>
                     </div>
                 </div>
                 <div>
-                    老板很负责,房子热水24小时供应,还有一个超大的投影仪,还有一个蓝牙音箱让我高兴坏了,对于喜欢听歌的我来说是真爱,床也很大两个人完全没有问题,一句话,老哥稳~
+                    {{rr_remark}}
                 </div>
                 <router-link to="/HDetail/remark" class="remark_view">阅读全部评价</router-link>
             </div>
@@ -80,14 +80,12 @@
             <h2>房源位置</h2>
             <div class="h_local_info">
                 <div>
-                    <span>杭州市</span>
-                    <span>，浙江省</span>
-                    <span>，中国</span>
+                    <span>{{address[0]}}</span>
                 </div>
                 <span><img src="images/map_local.png" alt=""></span>
             </div>
             <div class="h_local_cont">
-                房源的地理位置相当优越,首先毗邻太古里,从小区的后门出去就1min直达太古里,不仅有高大上的各国餐厅还有各种特色小吃,晚上逛逛太古里,在里面的小酒吧小酌一杯感受气氛非常的美妙｡3min到达ifs国际金融中心里面各种大牌琳琅满目,ifs旁边就是熊猫班车,每天滚动发车可到达各个景点,您也可以选择坐地铁都是不错的选择｡
+                {{address[1]}}
             </div>
         </div>
         <!-- 服务设施 -->
@@ -146,11 +144,11 @@
             <h2>入住须知</h2>
             <div>
                 <h3>入住与退房</h3>
-                <span>14:00-21:00/13:00</span>
+                <span>{{data.h_enterleave_time}}</span>
             </div>
             <div>
                 <h3>取消政策</h3>
-                <div>在入住前一天2：00PM前取消预定可获得全额退款</div>
+                <div>{{data.h_cancel}}</div>
             </div>
             <div>
                 <h3>入住须知</h3>
@@ -166,9 +164,9 @@
         <!-- 底部 -->
         <div class="base bottom_bar">
             <div>
-                <span>￥285<s>￥285</s><i>/晚</i></span>
+                <span>￥{{data.price}}<s>￥{{data.original_price}}</s><i>/晚</i></span>
             </div>
-            <router-link to="/HDetail/reserve" class="reserve">立即预定</router-link>
+            <router-link :to="`/HDetail/reserve/${data}`" class="reserve">立即预定</router-link>
         </div>
     </div>
 </template>
@@ -180,12 +178,20 @@ export default {
         return {
             st:240,
             data:[],
+            remark:[],
+            runame:"",
+            rr_time:"",
+            rr_remark:"",
             sh1:{
                 display:"inline-block"
             },
             sh2:{
                 display:"inline-block"
             },
+            tags:[],
+            fygl:[],
+            address:[],
+            reserve:[],
         }
     },
     components:{
@@ -208,14 +214,28 @@ export default {
                         hid:1
                     }
                 }).then(res=>{
-                    console.log(res.data.data[0]);
-                    this.data=res.data.data[0];
-                    if(!this.data.new_house){
-                        this.sh2.display="none"
-                    }
-                    if(!this.data.landlord){
-                        this.sh1.display="none"
-                    }
+                    console.log(res.data.data[0][0]);
+                    // 房源数据
+                    this.data=res.data.data[0][0];
+                    // 房源评论
+                    this.remark=res.data.data[1];
+                    this.runame=this.remark[0].uname;
+                    this.rr_time=this.remark[0].r_time;
+                    this.rr_remark=this.remark[0].r_remark;
+                    console.log(this.remark)
+                    if(!this.data.new_house){this.sh2.display="none"}
+                    if(!this.data.landlord){this.sh1.display="none"}
+                    // 房源标签
+                    this.tags=this.data.tags.split("/");
+                    // 房源概览
+                    this.fygl=this.data.h_subinfo.split(",");
+                    this.fygl.pop();
+                    // 地址
+                    this.address=this.data.addr_detail.split("/");
+                    // 立即预定
+                    this.reserve.push(this.data.price);
+                    this.reserve.push(this.data.original_price);
+                    this.reserve.push(this.data.original_price);
                 });
         },
         watchScroll(){
@@ -342,15 +362,15 @@ export default {
     .info_tag .tags li~li{
         margin-left: 4px;
     }
-    .info_tag .tags li:first-child{
+    .info_tag .tags li.green{
         background: #EAF7EA !important;
         color: #296E00 !important;
     }
-    .info_tag .tags li:nth-child(2){
+    .info_tag .tags li.orange{
         background: #f7f3ea !important;
         color: #8A2400 !important;
     }
-    .info_tag .tags li:nth-child(2) ~li{
+    .info_tag .tags li.orange ~li{
         background: #F2F2F2 !important;
     }
     /* 优惠内容 */
