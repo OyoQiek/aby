@@ -17,7 +17,7 @@ router.get("/sdetail",(req,res)=>{
     })
 });
 //分页查询商品的列表
-app.get("/story",(req,res)=>{
+router.get("/story",(req,res)=>{
     var p=req.query.pno;
     var ps=req.query.pagesize;
     if(!p){p=1}
