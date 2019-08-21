@@ -1,24 +1,8 @@
 <template>
   <div style="height:240px;">
-    <!-- <mt-swipe :auto="4000">
-      <mt-swipe-item><img src="images/h_detail/01/01.jpg" alt=""></mt-swipe-item>
-      <mt-swipe-item><img src="images/h_detail/01/02.jpg" alt=""></mt-swipe-item>
-      <mt-swipe-item><img src="images/h_detail/01/03.jpg" alt=""></mt-swipe-item>
-      <mt-swipe-item><img src="images/h_detail/01/04.jpg" alt=""></mt-swipe-item>
-      <mt-swipe-item><img src="images/h_detail/01/05.jpg" alt=""></mt-swipe-item>
-    </mt-swipe> -->
     <div class="swiper-container carousel">
     <div class="swiper-wrapper">
-      <div class="swiper-slide"><img src="images/h_detail/01/01.jpg" alt=""></div>
-      <div class="swiper-slide"><img src="images/h_detail/01/02.jpg" alt=""></div>
-      <div class="swiper-slide"><img src="images/h_detail/01/03.jpg" alt=""></div>
-      <div class="swiper-slide"><img src="images/h_detail/01/04.jpg" alt=""></div>
-      <div class="swiper-slide"><img src="images/h_detail/01/05.jpg" alt=""></div>
-      <div class="swiper-slide"><img src="images/h_detail/01/01.jpg" alt=""></div>
-      <div class="swiper-slide"><img src="images/h_detail/01/02.jpg" alt=""></div>
-      <div class="swiper-slide"><img src="images/h_detail/01/03.jpg" alt=""></div>
-      <div class="swiper-slide"><img src="images/h_detail/01/04.jpg" alt=""></div>
-      <div class="swiper-slide"><img src="images/h_detail/01/05.jpg" alt=""></div>
+      <div class="swiper-slide" v-for="(item,index) of pics" :key="index"><img :src="item" alt=""></div>
     </div>
     <!-- Add Pagination -->
     <div class="swiper-pagination"></div>
@@ -29,13 +13,16 @@
 import Swiper from 'swiper'
 export default {
   mounted() {
-    new Swiper('.carousel', {
+    setTimeout(function(){
+      new Swiper('.carousel', {
         pagination: {
-          el: '.swiper-pagination',
+          el:'.swiper-pagination',
           dynamicBullets: true,
         },
       });
+    },1000)
   },
+  props:["pics"]
 }
 </script>
 <style scoped>

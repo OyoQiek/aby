@@ -3,22 +3,25 @@
         <router-link :to="`/Home`" class="back"><span class="iconfont icon-arrow-left"></span></router-link>
         <div class="login">
             <div>
-                <h1>账号密码登录</h1>
+                <h1>账号密码注册</h1>
                 <div>
                 <span>用户名</span>
-                <input type="text"> 
+                <input type="text" id="phone"> 
                 </div>
                 <div>
                     <span>密码</span>
-                    <input type="password">
+                    <input type="password" id="upwd">
+                </div>
+                  <div>
+                    <span>确认密码</span>
+                    <input type="password" id="upwd1">
                 </div>
                 <div class="btn">
-                    <a href="javascript:">立即登录</a>
+                    <a href="javascript:" @click="reg()">立即注册</a>
                 </div>
                 <div class="reg_btn">
-                    <router-link  to="/Register" class="toReg"><span>立即注册?</span></router-link>
+                    <router-link  to="/Login" class="toLogin"><span>已有账号,请登录?</span></router-link>
                 </div>
-            
             </div>
         </div>
     </div>
@@ -29,6 +32,30 @@ export default {
     data() {
         return {
             
+        }
+    },
+    methods: {
+        reg(){
+            console.log(!phone.value)
+            if(!!phone.value && !!upwd.value && !!upwd1.value && upwd.value==upwd1.value){
+                var data={uname:phone.value,upwd:upwd.value}
+                this.axios.post(
+                    "/user/reg",
+                    data,
+                    {
+                        headers:{
+                            'Content-Type':'application/x-www-form-urlencoded'
+                        }
+                    }
+                ).then(res=>{
+                    console.log(res)
+                    if(res.data.code>0){
+                        this.$router.push("/Login")
+                    }
+                }).catch(err=>{
+                    console.log(err)
+                })
+            }
         }
     },
 }
@@ -43,7 +70,7 @@ export default {
         font-size: 15px;
         margin: 2% 0;
     }
-    .login .toReg{
+    .login .toLogin{
         display: block;
         font-size: 14px;
         margin-top: 20px;

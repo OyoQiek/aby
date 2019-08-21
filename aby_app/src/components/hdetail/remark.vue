@@ -1,8 +1,8 @@
 <template>
     <div>
-        <router-link to="/HDetail" class="back"><span class="iconfont icon-arrow-left"></span></router-link>
+        <router-link :to="`/HDetail/${hid}`" class="back"><span class="iconfont icon-arrow-left"></span></router-link>
         <div class="title">
-            <h2><span>22</span>条评价</h2>
+            <h2><span>{{list.length}}</span>条评价</h2>
             <div class="remark_star_w">
                 <div>   
                     <span class="remark_star"></span>
@@ -13,36 +13,50 @@
                 </div>
             </div>
         </div>
-        <div class="user_remark">
+        <div class="user_remark" v-for="(item,index) of list" :key="index">
             <div>
                 <img src="images/h_detail/01/01.jpg" class="remark_head_pic" alt="">
                 <div>
-                    <p>扩达</p>
-                    <span>2019年8月</span>
+                    <p>{{item.uname}}</p>
+                    <span>{{item.r_time}}</span>
                 </div>
             </div>
             <div>
-                老板很负责,房子热水24小时供应,还有一个超大的投影仪,还有一个蓝牙音箱让我高兴坏了,对于喜欢听歌的我来说是真爱,床也很大两个人完全没有问题,一句话,老哥稳~
+                {{item.r_remark}}
             </div>
         </div>
-        <div class="user_remark">
-            <div>
-                <img src="images/h_detail/01/01.jpg" class="remark_head_pic" alt="">
-                <div>
-                    <p>扩达</p>
-                    <span>2019年8月</span>
-                </div>
-            </div>
-            <div>
-                老板很负责,房子热水24小时供应,还有一个超大的投影仪,还有一个蓝牙音箱让我高兴坏了,对于喜欢听歌的我来说是真爱,床也很大两个人完全没有问题,一句话,老哥稳~
-            </div>
-        </div>
+        
     </div>
 </template>
 
 <script>
 export default {
-    
+    data() {
+        return {
+            list:[]
+        }
+    },
+    props:["hid"],
+    created() {
+        this.load();
+    },
+    methods: {
+        load(){
+            this.axios.get(
+                "/house/remark",
+                {
+                    params:{
+                        hid:this.hid
+                    }
+                }
+            ).then(res=>{
+                this.list=res.data.data
+                console.log(this.list)
+            }).catch(err=>{
+
+            })
+        }
+    },
 }
 </script>
 <style scoped>

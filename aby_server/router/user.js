@@ -18,15 +18,24 @@ router.get("/login",(req,res)=>{
 });
 // 注册
 router.post("/reg",(req,res)=>{
-    var uname=req.body.uanem;
+    var uname=req.body.uname;
     var upwd=req.body.upwd;
-    var sql=`insert into aby_user values(null,?,?,null,null,null,null,null,null,null)`;
-    pool.query(sql,[uname,upwd],(err,result)=>{
+    console.log(uname,upwd)
+    var sql=`select * from aby_user where uname=?`;
+    pool.query(sql,[uname],(err,result)=>{
         if(err) throw err;
-        if(result.affectedRows>0){
-            res.send({code:1,msg:"注册成功"});
+        if(result.length){
+            res.send({code:-1,msg:"用户已存在"})
         }else{
-            res.send({code:-1,msg:"请稍后再试"})
+            var sql=`insert into aby_user values(null,?,?,null,null,null,null,null,null,null)`;
+            pool.query(sql,[uname,upwd],(err,result)=>{
+                if(err) throw err;
+                if(result.affectedRows>0){
+                    res.send({code:1,msg:"注册成功"});
+                }else{
+                    res.send({code:-1,msg:"请稍后再试"})
+                }
+            })
         }
     })
 });

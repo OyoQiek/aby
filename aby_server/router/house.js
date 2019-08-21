@@ -27,6 +27,19 @@ router.get("/hdetail",(req,res)=>{
         }
     })
 });
+// 查询评论
+router.get("/remark",(req,res)=>{
+    var hid=req.query.hid;
+    var sql=`select * from aby_remark where hid=?`;
+    pool.query(sql,[hid],(err,result)=>{
+        if(err) throw err;
+        if(result.length>0){
+            res.send({code:1,msg:"查询成功",data:result});
+        }else{
+            res.send({code:1,msg:"查询成功",data:""});
+        }
+    })
+})
 //查询所有房源按时间倒序
 
 module.exports=router;

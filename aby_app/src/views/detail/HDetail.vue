@@ -8,7 +8,7 @@
             </div>
         </div>
         <!-- 轮播图 -->
-        <div style="height:240px;"> <carousel/> </div>
+        <div style="height:240px;"> <carousel :pics="pics"/> </div>
         <!-- 基本信息 -->
         <div class="baseinfo base">
             <div class="title_top" v-cloak><b>{{data.city}}</b> · <b>{{data.h_type}}</b></div>
@@ -47,7 +47,7 @@
         <div class="abstract base">
             <h2>摘要</h2>
             <div>{{data.detail}}</div>
-            <router-link :to="`/HDetail/abstract/${data.detail}`" class="abstract_view">查看详情</router-link>
+            <router-link :to="`/HDetail/abstract/${hid}`" class="abstract_view">查看详情</router-link>
         </div>
         <!-- 评价 -->
         <div class="remark base">
@@ -72,7 +72,7 @@
                 <div>
                     {{rr_remark}}
                 </div>
-                <router-link to="/HDetail/remark" class="remark_view">阅读全部评价</router-link>
+                <router-link :to="`/HDetail/remark/${hid}`" class="remark_view">阅读全部评价</router-link>
             </div>
         </div>
         <!-- 房源位置 -->
@@ -192,7 +192,11 @@ export default {
             fygl:[],
             address:[],
             reserve:[],
+            pics:[]
         }
+    },
+    props:{
+        hid:{default:""}
     },
     components:{
         Carousel,
@@ -211,7 +215,7 @@ export default {
                 "house/hdetail",
                 {
                     params:{
-                        hid:1
+                        hid:this.hid
                     }
                 }).then(res=>{
                     console.log(res.data.data[0][0]);
@@ -236,6 +240,8 @@ export default {
                     this.reserve.push(this.data.price);
                     this.reserve.push(this.data.original_price);
                     this.reserve.push(this.data.original_price);
+                    // 轮播图地址
+                    this.pics=this.data.pic_address.split(",");
                 });
         },
         watchScroll(){

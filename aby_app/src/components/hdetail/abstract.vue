@@ -1,11 +1,11 @@
 <template>
     <div class="abstract">
-        <router-link to="/HDetail" class="back"><span class="iconfont icon-arrow-left"></span></router-link>
+        <router-link :to="`/HDetail/${hid}`" class="back"><span class="iconfont icon-arrow-left"></span></router-link>
         <div class="abstract_p">
             <h2>房源介绍</h2>
             <h3>摘要</h3>
             <div>
-               {{message}}
+               {{data.detail}}
             </div>
         </div>
         
@@ -14,7 +14,32 @@
 
 <script>
 export default {
-    props:["message"]
+    data() {
+        return {
+            data:[]
+        }
+    },
+    created() {
+        this.load();
+    },
+    methods: {
+        load(){
+            this.axios.get(
+                "/house/hdetail",
+                {
+                    params:{
+                        hid:this.hid
+                    }
+                }).then(res=>{
+                    console.log(res.data.data[0][0]);
+                    // 房源数据
+                    this.data=res.data.data[0][0];
+                });
+        }
+        
+    },
+    props:["hid"]
+
 }
 </script>
 
