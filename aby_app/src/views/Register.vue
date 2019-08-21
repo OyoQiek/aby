@@ -38,19 +38,19 @@ export default {
         reg(){
             console.log(!phone.value)
             if(!!phone.value && !!upwd.value && !!upwd1.value && upwd.value==upwd1.value){
-                var data={uname:phone.value,upwd:upwd.value}
+                var data=new URLSearchParams();
+                data.append('uname',phone.value);
+                data.append('upwd',upwd.value);
+                var headers={'Content-Type':'application/x-www-form-urlencoded'}
                 this.axios.post(
                     "/user/reg",
-                    data,
-                    {
-                        headers:{
-                            'Content-Type':'application/x-www-form-urlencoded'
-                        }
-                    }
+                    data
                 ).then(res=>{
                     console.log(res)
                     if(res.data.code>0){
                         this.$router.push("/Login")
+                    }else{
+                        
                     }
                 }).catch(err=>{
                     console.log(err)
