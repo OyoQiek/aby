@@ -41,7 +41,6 @@ export default {
                 var data=new URLSearchParams();
                 data.append('uname',phone.value);
                 data.append('upwd',upwd.value);
-                var headers={'Content-Type':'application/x-www-form-urlencoded'}
                 this.axios.post(
                     "/user/reg",
                     data
