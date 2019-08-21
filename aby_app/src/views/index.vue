@@ -5,13 +5,13 @@
                     dasdsad
                 </mt-tab-container-item>
                 <mt-tab-container-item id="d2">
-                    dasdas
+                    <Wish/>
                 </mt-tab-container-item>
                 <mt-tab-container-item id="d3">
                     <story/>
                 </mt-tab-container-item>
                 <mt-tab-container-item id="d4">
-                  sadsadsa 
+                  <Login/> 
                 </mt-tab-container-item>
             </mt-tab-container>
         <mt-tabbar v-model="selected" fixed>
@@ -36,6 +36,8 @@
 </template>
 <script>
 import Story from "./story.vue"
+import Login from "./Login.vue"
+import Wish from "./Wish.vue"
 export default {
     data() {
         return {
@@ -43,7 +45,9 @@ export default {
         }
     },
     components:{
-        Story
+        Story,
+        Wish,
+        Login
     }
 }
 </script>

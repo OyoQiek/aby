@@ -76,6 +76,14 @@ CREATE TABLE aby_story(
     story_date VARCHAR(32),   #发布日期
     zan  INT                  #点赞数
 );
+insert into aby_story values(null,1,"名宿","清迈","清迈有一家有“大象叫早服务”的名宿","在这样的地方住几天，大概可以算是我来泰国以来最最特别的旅行体验了～","images/h_detail/01/01.jpg,images/h_detail/01/02.jpg,images/h_detail/01/03.jpg,images/h_detail/01/04.jpg,images/h_detail/01/05.jpg","2018年5月1日",99);
+insert into aby_story values(null,1,"名宿","清迈","清迈有一家有“大象叫早服务”的名宿","在这样的地方住几天，大概可以算是我来泰国以来最最特别的旅行体验了～","images/h_detail/01/01.jpg,images/h_detail/01/02.jpg,images/h_detail/01/03.jpg,images/h_detail/01/04.jpg,images/h_detail/01/05.jpg","2018年5月1日",99);
+insert into aby_story values(null,1,"名宿","清迈","清迈有一家有“大象叫早服务”的名宿","在这样的地方住几天，大概可以算是我来泰国以来最最特别的旅行体验了～","images/h_detail/01/01.jpg,images/h_detail/01/02.jpg,images/h_detail/01/03.jpg,images/h_detail/01/04.jpg,images/h_detail/01/05.jpg","2018年5月1日",99);
+insert into aby_story values(null,1,"名宿","清迈","清迈有一家有“大象叫早服务”的名宿","在这样的地方住几天，大概可以算是我来泰国以来最最特别的旅行体验了～","images/h_detail/01/01.jpg,images/h_detail/01/02.jpg,images/h_detail/01/03.jpg,images/h_detail/01/04.jpg,images/h_detail/01/05.jpg","2018年5月1日",99);
+insert into aby_story values(null,1,"名宿","清迈","清迈有一家有“大象叫早服务”的名宿","在这样的地方住几天，大概可以算是我来泰国以来最最特别的旅行体验了～","images/h_detail/01/01.jpg,images/h_detail/01/02.jpg,images/h_detail/01/03.jpg,images/h_detail/01/04.jpg,images/h_detail/01/05.jpg","2018年5月1日",99);
+insert into aby_story values(null,1,"名宿","清迈","清迈有一家有“大象叫早服务”的名宿","在这样的地方住几天，大概可以算是我来泰国以来最最特别的旅行体验了～","images/h_detail/01/01.jpg,images/h_detail/01/02.jpg,images/h_detail/01/03.jpg,images/h_detail/01/04.jpg,images/h_detail/01/05.jpg","2018年5月1日",99);
+insert into aby_story values(null,1,"名宿","清迈","清迈有一家有“大象叫早服务”的名宿","在这样的地方住几天，大概可以算是我来泰国以来最最特别的旅行体验了～","images/h_detail/01/01.jpg,images/h_detail/01/02.jpg,images/h_detail/01/03.jpg,images/h_detail/01/04.jpg,images/h_detail/01/05.jpg","2018年5月1日",99);
+
 #创建用户房源评论表
 CREATE TABLE aby_remark(
     rid INT PRIMARY KEY AUTO_INCREMENT,  #评论表ID

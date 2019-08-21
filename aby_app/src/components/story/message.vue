@@ -1,21 +1,21 @@
 <template>
     <div id="container">
-        <div class="m-list">
+        <div class="m-list" v-for="(item,i) of list" :key="i">
             <div class="message">
                 <div class="imga">
-                    <img src="../../../public/images/story/tp.jpg" alt="">
+                    <img :src="'http://127.0.0.1:3000/'+item.story_pic" alt="">
                     <span class="iconfont icon-dianzan1"></span>
                     <div>房源</div>
                 </div>
                 
-                <p>清迈</p><span>清迈有一家有"大象叫早服务"的民宿</span>
+                <p>{{subtitle}}</p><span>{{story_title}}}</span>
                 <div class="zan">
                     <div>
                          <img src="../../../public/images/story/tx.jpg" alt="">
                     </div>
                     <div>
                         <span class="iconfont icon-dianzan1"></span>
-                        <span>99+</span>
+                        <span>{{item.zan}}}</span>
                     </div>
                     
                     <div>
@@ -34,8 +34,23 @@
 export default {
     data() {
         return {
-            
+            list:[],
+            pno:0
         }
+    },
+    methods: {  
+        loadMore(){
+            var url="story";
+            this.pno++;
+            var obj={pno:this.pno}
+            this.axios.get(url,{params:obj}).then(res=>{
+                var rows=this.list.concat(res.data.data);
+                this.list=row;
+            })
+        }
+    },
+    created() {
+        this.loadMore()
     },
 }
 </script>
