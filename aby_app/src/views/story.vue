@@ -19,9 +19,6 @@
                 <mt-tab-container-item id="d1">
                      <h1>有趣房东</h1>
                       <message></message>
-                     <div class="btn">
-                        <a href="javascript:">显示更多故事</a>
-                     </div>
                 </mt-tab-container-item>
                 <mt-tab-container-item id="d2">
                     asdsa
@@ -66,7 +63,7 @@ import Message from "../components/story/message.vue"
 export default {
      data(){
         return{
-            selected:"d1"
+            selected:"d1",
         }
     },
     methods: {
@@ -80,6 +77,7 @@ export default {
             plk.style.height="0";
         },
     },
+
     components:{
         Message,
     }
@@ -205,19 +203,5 @@ export default {
         margin-top: 150px;
         margin-left: 5%;
     }
-    .btn{
-        border: 1px solid #008489;
-        padding: 12px 0;
-        text-align: center;
-        border-radius: 5px;
-        margin: 5% 5%;
-    }
-    .btn a{
-        color:#008489;
-        font-size: 14px;
-        font-weight: bold;
-    }
-    .btn a:hover{
-        color:#089ca1;
-    }
+    
 </style>

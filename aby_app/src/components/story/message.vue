@@ -1,21 +1,21 @@
 <template>
     <div id="container">
-        <div class="m-list" v-for="(item,i) of list" :key="i">
-            <div class="message">
+        <div class="m-list">
+            <div class="message"  v-for="(item,i) of list" :key="i">
                 <div class="imga">
-                    <img :src="'http://127.0.0.1:3000/'+item.story_pic" alt="">
+                    <img :src="images[0][2]" alt="">
                     <span class="iconfont icon-dianzan1"></span>
                     <div>房源</div>
                 </div>
                 
-                <p>{{subtitle}}</p><span>{{story_title}}}</span>
+                <p>{{item.subtitle}}</p><span>{{item.story_title}}</span>
                 <div class="zan">
                     <div>
                          <img src="../../../public/images/story/tx.jpg" alt="">
                     </div>
                     <div>
                         <span class="iconfont icon-dianzan1"></span>
-                        <span>{{item.zan}}}</span>
+                        <span>{{item.zan}}</span>
                     </div>
                     
                     <div>
@@ -26,7 +26,9 @@
             </div>
            
         </div>    
-        
+          <div class="btn" @click="loadMore">
+                        <a href="javascript:">显示更多故事</a>
+            </div>
     </div>
     
 </template>
@@ -35,17 +37,23 @@ export default {
     data() {
         return {
             list:[],
-            pno:0
+            pno:0,
+            images:[]
         }
     },
     methods: {  
         loadMore(){
-            var url="story";
+            var url="/story/story";
             this.pno++;
             var obj={pno:this.pno}
             this.axios.get(url,{params:obj}).then(res=>{
                 var rows=this.list.concat(res.data.data);
-                this.list=row;
+                this.list=rows;
+                for(var i=0;i<this.list.length;i++){
+                    this.images[i]=this.list[i].story_pic;
+                    this.images[i]=this.images[i].split(",");
+                    
+                }
             })
         }
     },
@@ -116,5 +124,20 @@ export default {
         padding: 4px 12px;
         border-radius: 3px;
         font-size:10px;
+    }
+    .btn{
+        border: 1px solid #008489;
+        padding: 12px 0;
+        text-align: center;
+        border-radius: 5px;
+        margin: 5% 5%;
+    }
+    .btn a{
+        color:#008489;
+        font-size: 14px;
+        font-weight: bold;
+    }
+    .btn a:hover{
+        color:#089ca1;
     }
 </style>

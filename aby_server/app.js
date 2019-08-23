@@ -5,6 +5,7 @@ const cors=require('cors');
 const session=require('express-session');
 const user=require("./router/user");
 const house=require("./router/house");
+const story=require("./router/story")
 
 var app=express();
 app.use(bodyParser.urlencoded({
@@ -24,4 +25,5 @@ app.use(express.static("public"));
 app.listen(3000);
 app.use("/user",user);
 app.use("/house",house);
+app.use("/story",story);
 
