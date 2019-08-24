@@ -39,11 +39,12 @@ create table aby_house(
     h_enterleave_time VARCHAR(32), #入住与退房的时间
     h_cancel VARCHAR(32),       #取消政策内容
     h_allow VARCHAR(32),       #入住须知 存储五个值 0不允许  1允许  逗号隔开  拆分数组使用
+    create_h_time VARCHAR(32),  #创建日期
     #绿色标签  0没有 1有
     landlord BOOL,          #超赞房东
     new_house BOOL          #超赞新房
 );
-insert into aby_house values(null,"B1 Design Studio: 设计师自住SOHO,临近西溪湿地,地铁五号线,阿里巴巴,浙江大学","整套酒店式公寓","杭州市","区域","1","1","1",268.00,358.00,"位于西溪国家湿地公园北门附近小区。现代风格,简洁明朗,物业管理完善安全。玄关小巧,客厅精致,餐厅宽敞,卫生间干净，卧室整洁,书房巧妙,露台明亮,工作室自在。","杭州，浙江，中国/房子位于滨江风雅钱塘小区西侧,家具家电全,面积约32平左右,带独立卫生间,配备洗衣机｡房间收拾的非常干净整洁,进房间需要换下拖鞋哈^_^,周边衣食住行都非常方便｡","images/h_detail/01/01.jpg,images/h_detail/01/02.jpg,images/h_detail/01/03.jpg,images/h_detail/01/04.jpg,images/h_detail/01/05.jpg","images/h_detail/01/01.jpg,images/h_detail/01/02.jpg,images/h_detail/01/03.jpg,images/h_detail/01/04.jpg,images/h_detail/01/05.jpg","享受8月16日-9月12日期间的8.8折优惠","在24天内完成预定，锁定限时好价","8.8","卧室1/1张标准的双人床,",31,"14:00后/12:00","48小时内免费退订","1/1/1/1/1",true,false);
+insert into aby_house values(null,"B1 Design Studio: 设计师自住SOHO,临近西溪湿地,地铁五号线,阿里巴巴,浙江大学","整套酒店式公寓","杭州市","区域","1","1","1",268.00,358.00,"位于西溪国家湿地公园北门附近小区。现代风格,简洁明朗,物业管理完善安全。玄关小巧,客厅精致,餐厅宽敞,卫生间干净，卧室整洁,书房巧妙,露台明亮,工作室自在。","杭州，浙江，中国/房子位于滨江风雅钱塘小区西侧,家具家电全,面积约32平左右,带独立卫生间,配备洗衣机｡房间收拾的非常干净整洁,进房间需要换下拖鞋哈^_^,周边衣食住行都非常方便｡","images/h_detail/01/01.jpg,images/h_detail/01/02.jpg,images/h_detail/01/03.jpg,images/h_detail/01/04.jpg,images/h_detail/01/05.jpg","images/h_detail/01/01.jpg,images/h_detail/01/02.jpg,images/h_detail/01/03.jpg,images/h_detail/01/04.jpg,images/h_detail/01/05.jpg","享受8月16日-9月12日期间的8.8折优惠","在24天内完成预定，锁定限时好价","8.8","卧室1/1张标准的双人床,",31,"14:00后/12:00","48小时内免费退订","1/1/1/1/1","2018/6/6",true,false);
 #创建保存房源标签的表
 CREATE TABLE aby_Tags(
     tid INT PRIMARY KEY AUTO_INCREMENT,
@@ -118,9 +119,10 @@ CREATE TABLE aby_order(
 #创建用户心愿单
 create table aby_wish(
     wid INT PRIMARY KEY AUTO_INCREMENT,   #心愿单id
-    w_title VARCHAR(32),                  #心愿单标题
+    hid INT,                  #心愿单标题
     uid INT
 );
+#心愿单故事
 create table aby_wish_content(
     wcid INT PRIMARY KEY AUTO_INCREMENT,
     storyid INT,

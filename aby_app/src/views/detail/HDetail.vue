@@ -3,12 +3,12 @@
         <!-- 头部 -->
         <div class="fixed_top">
             <div class="pr">
-                <div><span class="iconfont icon-zuo top_back"></span></div>
-                <div><span class="iconfont icon-aixin collect"></span></div>
+                <div><router-link to="/Home" style="color:#f8f8f8"><span class="iconfont icon-zuo top_back"></span></router-link> </div>
+                <span @click="addWish" class="iconfont icon-aixin collect"></span>
             </div>
         </div>
         <!-- 轮播图 -->
-        <div style="height:240px;"> <carousel :pics="pics"/> </div>
+        <div style="height:240px;"> <carousel :pics="pics" :height="`240px`"/> </div>
         <!-- 基本信息 -->
         <div class="baseinfo base">
             <div class="title_top" v-cloak><b>{{data.city}}</b> · <b>{{data.h_type}}</b></div>
@@ -192,7 +192,9 @@ export default {
             fygl:[],
             address:[],
             reserve:[],
-            pics:[]
+            pics:[],
+            // 心愿单按钮
+            wishBtn:false
         }
     },
     props:{
@@ -202,7 +204,7 @@ export default {
         Carousel,
         HouseFygs,
     },
-    created() {
+    mounted(){
         window.addEventListener("scroll",this.watchScroll,true);
         this.load();
     },
@@ -210,6 +212,9 @@ export default {
         window.removeEventListener("scroll",this.watchScroll)
     },
     methods: {
+        addWish(){
+            
+        },
         load(){
             this.axios.get(
                 "house/hdetail",
@@ -242,6 +247,7 @@ export default {
                     this.reserve.push(this.data.original_price);
                     // 轮播图地址
                     this.pics=this.data.pic_address.split(",");
+                    // this.wishBtn=this.data
                 });
         },
         watchScroll(){
@@ -278,7 +284,18 @@ export default {
         background: #F2F2F2 !important;
         color: #484848;
         font-size: 14px;
+        width: 100%;
+        box-sizing: border-box
         }
+    .collect{
+        display: inline-block;
+        position: absolute;
+        right: 5%;
+        top:10px;
+        padding: 8px;
+        color: #f8f8f8;
+        z-index: 98;
+    }
     .fixed_top{
         position: absolute;
         background: transparent;
@@ -539,7 +556,7 @@ export default {
         flex-flow: column wrap;
         justify-content: space-between;
         align-items: stretch;
-        height: 40px;
+        height: 60px;
         margin-left: 30px;
     }
     .server .server_type ul li{
@@ -547,7 +564,7 @@ export default {
         background-size: contain;
         padding-left: 20px;
         font-size: 12px;
-        width: 100px;
+        width: 120px;
         text-overflow: ellipsis;
         overflow: hidden;
     }
@@ -601,7 +618,7 @@ export default {
     .bottom_bar{
         position: fixed;
         bottom: 0;
-        width: 100%;
+        width: 100vw;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, .3);
         height: 65px;
         display: flex;

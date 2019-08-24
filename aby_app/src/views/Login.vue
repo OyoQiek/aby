@@ -6,14 +6,14 @@
                 <h1>账号密码登录</h1>
                 <div>
                 <span>用户名</span>
-                <input type="text"> 
+                <input type="text" id="uname"> 
                 </div>
                 <div>
                     <span>密码</span>
-                    <input type="password">
+                    <input type="password" id="upwd">
                 </div>
                 <div class="btn">
-                    <a href="javascript:">立即登录</a>
+                    <a href="javascript:" @click="Login">立即登录</a>
                 </div>
                 <div class="reg_btn">
                     <router-link  to="/Register" class="toReg"><span>立即注册?</span></router-link>
@@ -30,6 +30,26 @@ export default {
         return {
             
         }
+    },
+    methods: {
+        Login(){
+                if(!!uname && !!upwd){
+                    this.axios.get(
+                        "/user/login",{
+                        params:{
+                            uname:uname.value,
+                            upwd:upwd.value
+                        }}
+                    ).then(res=>{
+                        console.log(res)
+                        if(res.data.code>0){
+                            this.$router.push("/Home")
+                        }
+                    }).catch(err=>{
+                        console.log(err)
+                    })
+                }
+            }
     },
 }
 </script>

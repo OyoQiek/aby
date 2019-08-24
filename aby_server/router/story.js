@@ -30,5 +30,24 @@ router.get("/story",(req,res)=>{
         res.send({code:1,msg:"查询成功",data:result})
     })
 })
+//故事心愿单查询
+router.get("/getStoryWish",(req,res)=>{
+    var uid=req.session.uid;
+    if(!uid){
+        res.send({code:-2,msg:"请先登陆账户",data:""});
+        return;
+    }
+    var sql="select * from aby_wish_content inner join aby_story on aby_wish_content.storyid=aby_story.storyid where uid=?";
+    pool.query(sql,[uid],(err,result)=>{
+        if(err)throw err;
+        if(result.length){
+            res.send({code:1,msg:"查询成功",data:result})
+        }else{
+            res.send({code:-1,msg:"查询成功",data:""})
+        }
+    })
+})
+
+
 
 module.exports=router;

@@ -11,6 +11,9 @@ import Reserve from './components/hdetail/reserve'
 import Wish from './views/Wish.vue'
 import Login from './views/Login.vue'
 import Register from './views/Register.vue'
+import Date from './components/datePicker'
+import Search from './views/search'
+
 Vue.use(Router)
 
 export default new Router({
@@ -27,5 +30,7 @@ export default new Router({
     {path:"/Login",component:Login},
     {path:"/Register",component:Register},
     {path:"/HDetail/reserve/:message",component:Reserve,props:true},
+    {path:"/Date",component:Date},
+    {path:"/Search",component:Search}
   ]
 })
