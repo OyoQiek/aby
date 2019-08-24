@@ -11,6 +11,8 @@ import Reserve from './components/hdetail/reserve'
 import Wish from './views/Wish.vue'
 import Login from './views/Login.vue'
 import Register from './views/Register.vue'
+import Me from './views/Me.vue'
+import MeUpdata from './views/MeUpdate.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -18,7 +20,7 @@ export default new Router({
     {path:"/HDetail/:hid",component:HDetail,props:true},
     {path:'/Story',component:Story},
     {path:"/HDetail/abstract/:hid",component:Abstract,props:true},
-    {path:'/Sdetal',component:Sdetal},
+    {path:'/Sdetal/:storyid',component:Sdetal,props:true},
     {path:"/HDetail/remark/:hid",component:Remark,props:true},
     {path:"/HDetail/server",component:HServer},
     {path:"/Home",component:Home},
@@ -26,6 +28,8 @@ export default new Router({
     {path:"/Wish",component:Wish},
     {path:"/Login",component:Login},
     {path:"/Register",component:Register},
+    {path:"/Me",component:Me},
+    {path:"/MeUpdate",component:MeUpdata},
     {path:"/HDetail/reserve/:message",component:Reserve,props:true},
   ]
 })

@@ -3,7 +3,7 @@
         <div class="m-list">
             <div class="message"  v-for="(item,i) of list" :key="i">
                 <div class="imga">
-                    <img :src="images[0][2]" alt="">
+                    <router-link :to="`/Sdetal/${item.storyid}`"><img :src="images[0][2]" alt=""></router-link>
                     <span class="iconfont icon-dianzan1"></span>
                     <div>房源</div>
                 </div>
@@ -52,10 +52,10 @@ export default {
                 for(var i=0;i<this.list.length;i++){
                     this.images[i]=this.list[i].story_pic;
                     this.images[i]=this.images[i].split(",");
-                    
                 }
             })
-        }
+        },
+    
     },
     created() {
         this.loadMore()
@@ -64,7 +64,7 @@ export default {
 </script>
 <style scoped>
     #container{
-        margin: 0px 20px 0px 20px;
+        margin: 0px 20px 120px 20px;
     }
     .m-list{
         display: flex;

@@ -72,11 +72,11 @@ CREATE TABLE aby_story(
     subtitle VARCHAR(32),  #小标题  其实是地点定位
     story_title VARCHAR(32),  #故事标题
     story_content VARCHAR(2048), #故事内容,段落用
-    story_pic VARCHAR(128),   #图片路径
+    story_pic VARCHAR(256),   #图片路径
     story_date VARCHAR(32),   #发布日期
     zan  INT                  #点赞数
 );
-insert into aby_story values(null,1,"名宿","清迈","清迈有一家有“大象叫早服务”的名宿","在这样的地方住几天，大概可以算是我来泰国以来最最特别的旅行体验了～","images/h_detail/01/01.jpg,images/h_detail/01/02.jpg,images/h_detail/01/03.jpg,images/h_detail/01/04.jpg,images/h_detail/01/05.jpg","2018年5月1日",99);
+insert into aby_story values(null,1,"名宿","清迈","清迈有一家有“大象叫早服务”的名宿","在北方的海边度过了冬季两个月，一直在想春天去哪里生活。我喜欢大海，以往在南方海边住了五年，Y先生说，找个山里。他说加缪住在山上的时候，每日早晨起来就去散步，一边走路一边思考，过年后天气还是冷，山中要更冷几度，下了很多雨。从客厅去往卧室要经过大院子，院子里草木还枯黄着，鞋子踩上去很柔软的感觉，走下台阶，小径通往另一个小院。围墙边有桂花树和枇杷，这时节只有茶花盛开着。在这样的地方住几天，大概可以算是我来泰国以来最最特别的旅行体验了～","images/h_detail/01/01.jpg,images/h_detail/01/02.jpg,images/h_detail/01/03.jpg,images/h_detail/01/04.jpg,images/h_detail/01/05.jpg","2018年5月1日",99);
 insert into aby_story values(null,1,"名宿","清迈","清迈有一家有“大象叫早服务”的名宿","在这样的地方住几天，大概可以算是我来泰国以来最最特别的旅行体验了～","images/h_detail/01/01.jpg,images/h_detail/01/02.jpg,images/h_detail/01/03.jpg,images/h_detail/01/04.jpg,images/h_detail/01/05.jpg","2018年5月1日",99);
 insert into aby_story values(null,1,"名宿","清迈","清迈有一家有“大象叫早服务”的名宿","在这样的地方住几天，大概可以算是我来泰国以来最最特别的旅行体验了～","images/h_detail/01/01.jpg,images/h_detail/01/02.jpg,images/h_detail/01/03.jpg,images/h_detail/01/04.jpg,images/h_detail/01/05.jpg","2018年5月1日",99);
 insert into aby_story values(null,1,"名宿","清迈","清迈有一家有“大象叫早服务”的名宿","在这样的地方住几天，大概可以算是我来泰国以来最最特别的旅行体验了～","images/h_detail/01/01.jpg,images/h_detail/01/02.jpg,images/h_detail/01/03.jpg,images/h_detail/01/04.jpg,images/h_detail/01/05.jpg","2018年5月1日",99);
@@ -106,7 +106,12 @@ CREATE TABLE aby_storyremark(
     r_time VARCHAR(32),       #时间
     r_remark VARCHAR(256)    #评论
 );
-
+insert into aby_storyremark values(null,1,"张东","2019年7月7日","老板很负责,房子热水24小时供应,还有一个超大的投影仪,还有一个蓝牙音箱让我高兴坏了,对于喜欢听歌的我来说是真爱,床也很大两个人完全没有问题,一句话,老哥稳~");
+insert into aby_storyremark values(null,1,"文华","2019年7月8日","老板很负责,房子热水24小时供应,还有一个蓝牙音箱让我高兴坏了,对于喜欢听歌的我来说是真爱,床也很大两个人完全没有问题,一句话,老哥稳~");
+insert into aby_storyremark values(null,1,"老曹","2019年7月9日","老板很负责,房子热水24小时供应,还有一个超大的投影仪,,对于喜欢听歌的我来说是真爱,床也很大两个人完全没有问题,一句话,老哥稳~");
+insert into aby_storyremark values(null,1,"老马","2019年7月1日","老板很负责,房子热水24小时供应,还有一个超大的投影仪,,对于喜欢听歌的我来说是真爱,床也很大两个人完全没有问题,一句话,老哥稳~");
+insert into aby_storyremark values(null,1,"吴亦凡","2019年7月2日","老板很负责,房子热水24小时供应,还有一个超大的投影仪,还有一个蓝牙音箱让我高兴坏了,,床也很大两个人完全没有问题,一句话,老哥稳~");
+insert into aby_storyremark values(null,1,"蔡玉坤","2019年7月3日","老板很负责,房子热水24小时供应,还有一个超大的投影仪,还有一个蓝牙音箱让我高兴坏了,对于喜欢听歌的我来说是真爱,一句话,老哥稳~");
 #创建用户房源订单表
 CREATE TABLE aby_order(
     oid INT PRIMARY KEY AUTO_INCREMENT,   #预定表id
