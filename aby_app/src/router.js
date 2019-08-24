@@ -13,6 +13,9 @@ import Login from './views/Login.vue'
 import Register from './views/Register.vue'
 import Me from './views/Me.vue'
 import MeUpdata from './views/MeUpdate.vue'
+import Date from './components/datePicker'
+import Search from './views/search'
+
 Vue.use(Router)
 
 export default new Router({
@@ -31,5 +34,7 @@ export default new Router({
     {path:"/Me",component:Me},
     {path:"/MeUpdate",component:MeUpdata},
     {path:"/HDetail/reserve/:message",component:Reserve,props:true},
+    {path:"/Date",component:Date},
+    {path:"/Search",component:Search}
   ]
 })

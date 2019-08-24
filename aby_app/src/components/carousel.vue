@@ -1,5 +1,5 @@
 <template>
-  <div style="height:240px;">
+  <div :style="divHeight">
     <div class="swiper-container carousel">
     <div class="swiper-wrapper">
       <div class="swiper-slide" v-for="(item,index) of pics" :key="index"><img :src="item" alt=""></div>
@@ -12,6 +12,13 @@
 <script>
 import Swiper from 'swiper'
 export default {
+  data() {
+    return {
+      divHeight:{
+        height:this.height
+      }
+    }
+  },
   mounted() {
     setTimeout(function(){
       new Swiper('.carousel', {
@@ -21,8 +28,9 @@ export default {
         },
       });
     },1000)
+
   },
-  props:["pics"]
+  props:["pics","height"]
 }
 </script>
 <style scoped>

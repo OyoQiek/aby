@@ -3,7 +3,7 @@ var router=express.Router();
 const pool=require("../pool");
 // 登陆
 router.get("/login",(req,res)=>{
-    var uname=req.query.uanem;
+    var uname=req.query.uname;
     var upwd=req.query.upwd;
     var sql=`select * from aby_user where uname=? and upwd=?`;
     pool.query(sql,[uname,upwd],(err,result)=>{

@@ -5,6 +5,7 @@ const pool=require("../pool");
 //房源详情
 router.get("/hdetail",(req,res)=>{
     var hid=req.query.hid;
+    var uid=req.session.uid;
     var sql=`select * from aby_house inner join aby_Tags on aby_house.hid=aby_Tags.hid where aby_house.hid=?`;
     pool.query(sql,[hid],(err,result)=>{
         if(err) throw err;
@@ -17,8 +18,20 @@ router.get("/hdetail",(req,res)=>{
                 if(err) throw err;
                 if(result1.length>0){
                     data[1]=result1;
+                    sql=`select * from aby_wish where uid=?`;
+                    pool.query(sql,[uid],(err,result1)=>{
+                        if(err) throw err;
+                        if(result1.length){
+                            data[2]=true;
+                            res.send({code:1,msg:"查询成功",data:data});
+                        }else{
+                            data[2]=false;
+                            res.send({code:1,msg:"查询成功",data:data});
+                        }
+                    })
                     res.send({code:1,msg:"查询成功",data:data});
                 }else{
+                    data[1]=[];
                     res.send({code:1,msg:"查询成功",data:data});
                 }
             })
@@ -36,10 +49,69 @@ router.get("/remark",(req,res)=>{
         if(result.length>0){
             res.send({code:1,msg:"查询成功",data:result});
         }else{
-            res.send({code:1,msg:"查询成功",data:""});
+            res.send({code:-1,msg:"查询失败",data:""});
         }
     })
 })
-//查询所有房源按时间倒序
+//查询所有房源按时间倒序 每次查询4条
+router.get("/houseByTime",(req,res)=>{
+    var p=req.query.pno;
+    var ps=req.query.pagesize;
+    if(!p){p=1}
+    if(!ps){ps=4}
+    var offset=(p-1)*ps;
+    ps=parseInt(ps);
+    var sql=`select * from aby_house group by create_h_time desc  limit ?,?`;
+    pool.query(sql,[offset,ps],(err,result)=>{
+        if(err) throw err;
+        if(result.length>0){
+            res.send({code:1,msg:"查询成功",data:result});
+        }else{
+            res.send({code:-1,msg:"查询失败",data:""});
+        }
+    })
+});
+
+
+//房源收藏心愿单
+router.post("/houseZan",(req,res)=>{
+    var hid=req.body.hid;
+    var uid=req.session.uid;
+    if(!uid){
+        res.send({code:-2,msg:"请先登陆账户",data:""});
+        return;
+    }
+    var sql=`insert into aby_wish values(null,?,?)`;
+    pool.query(sql,[hid,uid],(err,result)=>{
+        if(err) throw err;
+        if(result.affectedRows>0){
+            res.send({code:1,msg:"添加成功",data:result});
+        }else{
+            res.send({code:-1,msg:"添加失败",data:""});
+        }
+    })
+});
+//房源心愿单查询
+router.get("/getWishHouse",(req,res)=>{
+    var uid=req.session.uid;
+    if(!uid){
+        res.send({code:-2,msg:"请先登陆账户",data:""});
+        return;
+    }
+    var sql=`select * from aby_wish inner join aby_house on aby_wish.hid=aby_house.hid where uid=?`;
+    pool.query(sql,[uid],(err,result)=>{
+        if(err) throw err;
+        if(result.length>0){
+            res.send({code:1,msg:"查询成功",data:result});
+        }else{
+            res.send({code:-1,msg:"查询失败",data:""});
+        }
+    })
+});
+
+// 房源搜索
+//select * from aby_order where (? not between ? and  ?) and (? not between ? and ?)
+
+
 
 module.exports=router;

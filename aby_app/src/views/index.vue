@@ -2,7 +2,7 @@
     <div class="nav_bar">
              <mt-tab-container v-model="selected">
                 <mt-tab-container-item id="d1">
-                    dasdsad
+                    <Index/>
                 </mt-tab-container-item>
                 <mt-tab-container-item id="d2">
                     <Wish/>
@@ -35,19 +35,37 @@
     </div>
 </template>
 <script>
+import Index from './index/index'
 import Story from "./story.vue"
 import Login from "./Login.vue"
 import Wish from "./Wish.vue"
 export default {
     data() {
         return {
-            selected:"d1"
+            selected:"d1",
+            new_h_data:[]
         }
+    },
+    created() {
+        this.load();
+    },
+    methods: {
+        load(){
+            this.axios.get(
+                "/house/houseByTime"
+            ).then(res=>{
+                this.new_h_data=res.data.data;
+                console.log(this.new_h_data)
+            }).catch(err=>{
+                console.log(err);
+            })
+        },
     },
     components:{
         Story,
         Wish,
-        Login
+        Login,
+        Index
     }
 }
 </script>
