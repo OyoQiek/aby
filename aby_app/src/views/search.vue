@@ -8,15 +8,15 @@
 		</div>
 		<div class="kong"></div>
 		<router-link :to="``">
-		<div class="for-car" v-for="i of 10" :key="i">
+		<div class="for-car" v-for="(item,i) of data" :key="i">
 			<span id="aixin" @click="cla" class="iconfont icon-aixin"></span>
-			<div class="for-carousel"><carousel></carousel></div>
+			<div class="for-carousel"><carousel :height="`150px`" :pics="images[i]"></carousel></div>
 			<div class="for-xia">
-				<p class="h_type">整套公寓·杭州</p>
-				<p class="title">跨世纪的复活节撒回复可见撒回复</p>
+				<p class="h_type">{{item.h_type}}·{{item.city}}</p>
+				<p class="title">{{item.title}}</p>
 				<p class="pingjia">*****<span>45</span>条评论</p>
 				<hr>
-				<p class="price">￥<span>352</span>/晚</p>
+				<p class="price">￥<span>{{item.price}}</span>/晚</p>
 			</div>
 		</div>
 		</router-link>
@@ -27,11 +27,33 @@
 	export default {
 		data() {
 			return {
-				search:"房源"
+				search:"房源",
+				data:[],
+      			images:[],
 			}
 		},
 		components:{carousel},
+		created() {
+			this.load();
+		},
 		methods: {
+			load(){
+				this.axios.get(
+				"/house/houseByTime",
+					{params:{
+					pno:1,
+					pagesize:4
+					}}
+				).then(res=>{
+					console.log(res.data.data);
+					this.data=res.data.data;
+					for(var i=0;i<this.data.length;i++){
+						this.images[i]=this.data[i].pic_address.split(",")
+					}
+				}).catch(err=>{
+
+				})
+			},
 			return1:function(){
 				this.$router.push("/Home")
 			},
@@ -120,7 +142,7 @@
 	#aixin{
 		position: absolute;
 		right: 20px;
-		top:25px;
+		top:5px;
 	}
 	.wei{
 		display: inline;

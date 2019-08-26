@@ -84,7 +84,9 @@ export default {
 }
 </script>
 <style scoped>
-
+.mint-navbar{
+    width: 100% !important;
+}
     .container{
         position: fixed;
         width: 100%;

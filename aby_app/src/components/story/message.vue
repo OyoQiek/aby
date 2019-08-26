@@ -3,7 +3,7 @@
         <div class="m-list">
             <div class="message"  v-for="(item,i) of list" :key="i">
                 <div class="imga">
-                    <router-link :to="`/Sdetal/${item.storyid}`"><img :src="images[0][2]" alt=""></router-link>
+                    <router-link :to="`/Sdetal/1`"><img :src="images[0][2]" alt=""></router-link>
                     <span class="iconfont icon-dianzan1"></span>
                     <div>房源</div>
                 </div>

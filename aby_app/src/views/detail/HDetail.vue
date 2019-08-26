@@ -3,7 +3,7 @@
         <!-- 头部 -->
         <div class="fixed_top">
             <div class="pr">
-                <div><router-link to="/Home" style="color:#f8f8f8"><span class="iconfont icon-zuo top_back"></span></router-link> </div>
+                <div @click="toH" ><span class="iconfont icon-zuo top_back"></span> </div>
                 <span @click="addWish" class="iconfont icon-aixin collect"></span>
             </div>
         </div>
@@ -204,14 +204,15 @@ export default {
         Carousel,
         HouseFygs,
     },
-    mounted(){
-        window.addEventListener("scroll",this.watchScroll,true);
+    activated(){
+        window.addEventListener("scroll",this.watchScroll);
         this.load();
     },
-    destroyed() {
-        window.removeEventListener("scroll",this.watchScroll)
-    },
     methods: {
+        toH(){
+            window.removeEventListener("scroll",this.watchScroll);
+            this.$router.push({path:"/Home"})
+        },
         addWish(){
             
         },

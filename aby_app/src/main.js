@@ -11,8 +11,8 @@ import './font/iconfont.css'
 import 'swiper/dist/css/swiper.css'
 
 //iview
-import iView from 'iview';
-import 'iview/dist/styles/iview.css';
+// import iView from 'iview';
+// import 'iview/dist/styles/iview.css';
 
 
 axios.defaults.baseURL="http://127.0.0.1:3000/"
@@ -20,7 +20,7 @@ axios.defaults.withCredentials=true
 Vue.prototype.axios=axios
 Vue.use(MintUI)
 Vue.config.productionTip = false
-Vue.use(iView)
+// Vue.use(iView)
 
 new Vue({
   router,

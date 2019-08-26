@@ -45,6 +45,9 @@ create table aby_house(
     new_house BOOL          #超赞新房
 );
 insert into aby_house values(null,"B1 Design Studio: 设计师自住SOHO,临近西溪湿地,地铁五号线,阿里巴巴,浙江大学","整套酒店式公寓","杭州市","区域","1","1","1",268.00,358.00,"位于西溪国家湿地公园北门附近小区。现代风格,简洁明朗,物业管理完善安全。玄关小巧,客厅精致,餐厅宽敞,卫生间干净，卧室整洁,书房巧妙,露台明亮,工作室自在。","杭州，浙江，中国/房子位于滨江风雅钱塘小区西侧,家具家电全,面积约32平左右,带独立卫生间,配备洗衣机｡房间收拾的非常干净整洁,进房间需要换下拖鞋哈^_^,周边衣食住行都非常方便｡","images/h_detail/01/01.jpg,images/h_detail/01/02.jpg,images/h_detail/01/03.jpg,images/h_detail/01/04.jpg,images/h_detail/01/05.jpg","images/h_detail/01/01.jpg,images/h_detail/01/02.jpg,images/h_detail/01/03.jpg,images/h_detail/01/04.jpg,images/h_detail/01/05.jpg","享受8月16日-9月12日期间的8.8折优惠","在24天内完成预定，锁定限时好价","8.8","卧室1/1张标准的双人床,",31,"14:00后/12:00","48小时内免费退订","1/1/1/1/1","2018/6/6",true,false);
+insert into aby_house values(null,"B1 Design Studio: 设计师自住SOHO,临近西溪湿地,地铁五号线,阿里巴巴,浙江大学","整套酒店式公寓","杭州市","区域","1","1","1",268.00,358.00,"位于西溪国家湿地公园北门附近小区。现代风格,简洁明朗,物业管理完善安全。玄关小巧,客厅精致,餐厅宽敞,卫生间干净，卧室整洁,书房巧妙,露台明亮,工作室自在。","杭州，浙江，中国/房子位于滨江风雅钱塘小区西侧,家具家电全,面积约32平左右,带独立卫生间,配备洗衣机｡房间收拾的非常干净整洁,进房间需要换下拖鞋哈^_^,周边衣食住行都非常方便｡","images/h_detail/01/01.jpg,images/h_detail/01/02.jpg,images/h_detail/01/03.jpg,images/h_detail/01/04.jpg,images/h_detail/01/05.jpg","images/h_detail/01/01.jpg,images/h_detail/01/02.jpg,images/h_detail/01/03.jpg,images/h_detail/01/04.jpg,images/h_detail/01/05.jpg","享受8月16日-9月12日期间的8.8折优惠","在24天内完成预定，锁定限时好价","8.8","卧室1/1张标准的双人床,",31,"14:00后/12:00","48小时内免费退订","1/1/1/1/1","2018/7/6",true,false);
+insert into aby_house values(null,"B1 Design Studio: 设计师自住SOHO,临近西溪湿地,地铁五号线,阿里巴巴,浙江大学","整套酒店式公寓","杭州市","区域","1","1","1",268.00,358.00,"位于西溪国家湿地公园北门附近小区。现代风格,简洁明朗,物业管理完善安全。玄关小巧,客厅精致,餐厅宽敞,卫生间干净，卧室整洁,书房巧妙,露台明亮,工作室自在。","杭州，浙江，中国/房子位于滨江风雅钱塘小区西侧,家具家电全,面积约32平左右,带独立卫生间,配备洗衣机｡房间收拾的非常干净整洁,进房间需要换下拖鞋哈^_^,周边衣食住行都非常方便｡","images/h_detail/01/01.jpg,images/h_detail/01/02.jpg,images/h_detail/01/03.jpg,images/h_detail/01/04.jpg,images/h_detail/01/05.jpg","images/h_detail/01/01.jpg,images/h_detail/01/02.jpg,images/h_detail/01/03.jpg,images/h_detail/01/04.jpg,images/h_detail/01/05.jpg","享受8月16日-9月12日期间的8.8折优惠","在24天内完成预定，锁定限时好价","8.8","卧室1/1张标准的双人床,",31,"14:00后/12:00","48小时内免费退订","1/1/1/1/1","2018/8/6",true,false);
+insert into aby_house values(null,"B1 Design Studio: 设计师自住SOHO,临近西溪湿地,地铁五号线,阿里巴巴,浙江大学","整套酒店式公寓","杭州市","区域","1","1","1",268.00,358.00,"位于西溪国家湿地公园北门附近小区。现代风格,简洁明朗,物业管理完善安全。玄关小巧,客厅精致,餐厅宽敞,卫生间干净，卧室整洁,书房巧妙,露台明亮,工作室自在。","杭州，浙江，中国/房子位于滨江风雅钱塘小区西侧,家具家电全,面积约32平左右,带独立卫生间,配备洗衣机｡房间收拾的非常干净整洁,进房间需要换下拖鞋哈^_^,周边衣食住行都非常方便｡","images/h_detail/01/01.jpg,images/h_detail/01/02.jpg,images/h_detail/01/03.jpg,images/h_detail/01/04.jpg,images/h_detail/01/05.jpg","images/h_detail/01/01.jpg,images/h_detail/01/02.jpg,images/h_detail/01/03.jpg,images/h_detail/01/04.jpg,images/h_detail/01/05.jpg","享受8月16日-9月12日期间的8.8折优惠","在24天内完成预定，锁定限时好价","8.8","卧室1/1张标准的双人床,",31,"14:00后/12:00","48小时内免费退订","1/1/1/1/1","2018/7/5",true,false);
 #创建保存房源标签的表
 CREATE TABLE aby_Tags(
     tid INT PRIMARY KEY AUTO_INCREMENT,
@@ -52,6 +55,9 @@ CREATE TABLE aby_Tags(
     tags VARCHAR(128) #保存房源的灰色标签内容用/隔开，之后分割成数组来使用
 );
 insert into aby_Tags values(null,1,"可以做饭/可以停车/有烘干机");
+insert into aby_Tags values(null,2,"可以轰趴/可以停车/有烘干机");
+insert into aby_Tags values(null,3,"可以做饭/可以停车");
+insert into aby_Tags values(null,4,"可以做饭/可以停车/可以长租");
 #创建保存房源便利设施的表
 CREATE TABLE aby_server(
     sid INT PRIMARY KEY AUTO_INCREMENT,
@@ -84,7 +90,6 @@ insert into aby_story values(null,1,"名宿","清迈","清迈有一家有“大�
 insert into aby_story values(null,1,"名宿","清迈","清迈有一家有“大象叫早服务”的名宿","在这样的地方住几天，大概可以算是我来泰国以来最最特别的旅行体验了～","images/h_detail/01/01.jpg,images/h_detail/01/02.jpg,images/h_detail/01/03.jpg,images/h_detail/01/04.jpg,images/h_detail/01/05.jpg","2018年5月1日",99);
 insert into aby_story values(null,1,"名宿","清迈","清迈有一家有“大象叫早服务”的名宿","在这样的地方住几天，大概可以算是我来泰国以来最最特别的旅行体验了～","images/h_detail/01/01.jpg,images/h_detail/01/02.jpg,images/h_detail/01/03.jpg,images/h_detail/01/04.jpg,images/h_detail/01/05.jpg","2018年5月1日",99);
 insert into aby_story values(null,1,"名宿","清迈","清迈有一家有“大象叫早服务”的名宿","在这样的地方住几天，大概可以算是我来泰国以来最最特别的旅行体验了～","images/h_detail/01/01.jpg,images/h_detail/01/02.jpg,images/h_detail/01/03.jpg,images/h_detail/01/04.jpg,images/h_detail/01/05.jpg","2018年5月1日",99);
-
 #创建用户房源评论表
 CREATE TABLE aby_remark(
     rid INT PRIMARY KEY AUTO_INCREMENT,  #评论表ID
@@ -99,6 +104,9 @@ insert into aby_remark values(null,1,"扩达","2019/7/7","老板很负责,房子
 insert into aby_remark values(null,1,"扩达","2019/7/7","老板很负责,房子热水24小时供应,还有一个超大的投影仪,还有一个蓝牙音箱让我高兴坏了,对于喜欢听歌的我来说是真爱,床也很大两个人完全没有问题,一句话,老哥稳~");
 insert into aby_remark values(null,1,"扩达","2019/7/7","老板很负责,房子热水24小时供应,还有一个超大的投影仪,还有一个蓝牙音箱让我高兴坏了,对于喜欢听歌的我来说是真爱,床也很大两个人完全没有问题,一句话,老哥稳~");
 insert into aby_remark values(null,1,"扩达","2019/7/7","老板很负责,房子热水24小时供应,还有一个超大的投影仪,还有一个蓝牙音箱让我高兴坏了,对于喜欢听歌的我来说是真爱,床也很大两个人完全没有问题,一句话,老哥稳~");
+insert into aby_remark values(null,2,"扩达","2019/7/7","老板很负责,房子热水24小时供应,还有一个超大的投影仪,还有一个蓝牙音箱让我高兴坏了,对于喜欢听歌的我来说是真爱,床也很大两个人完全没有问题,一句话,老哥稳~");
+insert into aby_remark values(null,3,"扩达","2019/7/7","老板很负责,房子热水24小时供应,还有一个超大的投影仪,还有一个蓝牙音箱让我高兴坏了,对于喜欢听歌的我来说是真爱,床也很大两个人完全没有问题,一句话,老哥稳~");
+insert into aby_remark values(null,4,"扩达","2019/7/7","老板很负责,房子热水24小时供应,还有一个超大的投影仪,还有一个蓝牙音箱让我高兴坏了,对于喜欢听歌的我来说是真爱,床也很大两个人完全没有问题,一句话,老哥稳~");
 #创建用户故事评论表
 CREATE TABLE aby_storyremark(
     srid INT PRIMARY KEY AUTO_INCREMENT,  #故事评论表ID

@@ -16,13 +16,6 @@
             </div>
 
           </div>
-          <div class="fy_time">
-            <row>
-              <i-col span="24">
-                  <Date-picker :value="value2" format="yyyy/MM/dd" type="daterange" placement="bottom-end" placeholder="选择日期" style="width: 100%"></Date-picker>
-              </i-col>
-            </row>
-          </div>
           <mt-button class="ss_fy" size="large">搜索房源</mt-button>
         </mt-tab-container-item>
         <mt-tab-container-item id="tiyan">
@@ -39,9 +32,9 @@
         </mt-tab-container-item>
       </mt-tab-container>
     </div>
-    <zuixin></zuixin>
-    <xjbfy></xjbfy>
-    <gfhp></gfhp>
+    <zuixin :data="data" :images="images"></zuixin>
+    <!-- <xjbfy></xjbfy>
+    <gfhp></gfhp> -->
     <fangdong></fangdong>
     <div class="quan-1">
       <div class="quan-2">
@@ -80,24 +73,26 @@ import fangdong from './fangdong'
 export default {
   data() {
     return {
-      value1: '2016-01-01',
-      value2: ['2016-01-01', '2016-02-15'],
       selected:"fangyuan",
       city:"",
       searchBarFixed:false,
       jingdian:"",
-      text:""
+      text:"",
+      data:[],
+      images:[],
+      pno:0
     }
   },
   components:{carousel,zuixin,xjbfy,gfhp,fangdong},
-  mounted() {
-    window.addEventListener('scroll',this.handleScroll)
+  activated() {
+    window.addEventListener('scroll',this.handleScroll,true);
+    this.showMore();
   },
   directives:{
     focus:{
       inserted:function(el,{value}){
         if(value)
-        {elem.focus()}
+        {el.focus()}
       }
     }
   },
@@ -108,8 +103,7 @@ export default {
     },
     handleScroll(){
       var scrollTop=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop;
-      var offsetTop=document.querySelector('.dingwei').offsetTop;
-      if (scrollTop>offsetTop){
+      if (scrollTop>200){
         this.searchBarFixed=true;
       }else{
         this.searchBarFixed=false;
@@ -136,6 +130,19 @@ export default {
       quan.style.display="none";
       this.jingdian=this.text;
     },
+    showMore(){
+      this.axios.get(
+        "/house/houseByT"
+      ).then(res=>{
+        this.data=res.data.data;
+        for(var i=0;i<this.data.length;i++){
+          this.images[i]=this.data[i].pic_address.split(",")
+        }
+        console.log(this.data)
+      }).catch(err=>{
+
+      })
+    }
   },
   watch:{
     text(){

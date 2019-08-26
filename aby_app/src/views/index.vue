@@ -11,7 +11,7 @@
                     <story/>
                 </mt-tab-container-item>
                 <mt-tab-container-item id="d4">
-                  <Login/> 
+                  <Me/> 
                 </mt-tab-container-item>
             </mt-tab-container>
         <mt-tabbar v-model="selected" fixed>
@@ -28,8 +28,11 @@
                 故事
             </mt-tab-item>
             <mt-tab-item id="d4">
-                <p class="iconfont icon-sousuo "></p>
-                我的
+                <div @click="loginSure">
+                    <p class="iconfont icon-sousuo "></p>
+                    我的
+                </div>
+                
         </mt-tab-item>
 </mt-tabbar>
     </div>
@@ -39,6 +42,7 @@ import Index from './index/index'
 import Story from "./story.vue"
 import Login from "./Login.vue"
 import Wish from "./Wish.vue"
+import Me from './Me.vue'
 export default {
     data() {
         return {
@@ -46,25 +50,24 @@ export default {
             new_h_data:[]
         }
     },
-    created() {
-        this.load();
-    },
     methods: {
-        load(){
+        loginSure(){
             this.axios.get(
-                "/house/houseByTime"
+                "/user/getUser"
             ).then(res=>{
-                this.new_h_data=res.data.data;
-                console.log(this.new_h_data)
-            }).catch(err=>{
-                console.log(err);
+                console.log(res)
+                if(res.data.code>0){
+
+                }else{
+                    this.$router.push("/Login")
+                }
             })
         },
     },
     components:{
         Story,
         Wish,
-        Login,
+        Me,
         Index
     }
 }

@@ -18,6 +18,10 @@ router.get("/hdetail",(req,res)=>{
                 if(err) throw err;
                 if(result1.length>0){
                     data[1]=result1;
+                    if(!uid){
+                        res.send({code:1,msg:"查询成功",data:data});
+                        return;
+                    }
                     sql=`select * from aby_wish where uid=?`;
                     pool.query(sql,[uid],(err,result1)=>{
                         if(err) throw err;
@@ -28,8 +32,7 @@ router.get("/hdetail",(req,res)=>{
                             data[2]=false;
                             res.send({code:1,msg:"查询成功",data:data});
                         }
-                    })
-                    res.send({code:1,msg:"查询成功",data:data});
+                    }) 
                 }else{
                     data[1]=[];
                     res.send({code:1,msg:"查询成功",data:data});
@@ -68,6 +71,25 @@ router.get("/houseByTime",(req,res)=>{
             res.send({code:1,msg:"查询成功",data:result});
         }else{
             res.send({code:-1,msg:"查询失败",data:""});
+        }
+    })
+});
+router.get("/houseByT",(req,res)=>{
+    var p=req.query.pno;
+    var ps=req.query.pagesize;
+    if(!p){p=1}
+    if(!ps){ps=4}
+    var offset=(p-1)*ps;
+    ps=parseInt(ps);
+    var sql=`select * from aby_house group by create_h_time desc  limit ?,?`;
+    pool.query(sql,[offset,ps],(err,result)=>{
+        if(err) throw err;
+        if(result.length>0){
+            res.send({code:1,msg:"查询成功",data:result});
+            return;
+        }else{
+            res.send({code:-1,msg:"查询失败",data:""});
+            return;
         }
     })
 });

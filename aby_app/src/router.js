@@ -27,7 +27,6 @@ export default new Router({
     {path:"/HDetail/remark/:hid",component:Remark,props:true},
     {path:"/HDetail/server",component:HServer},
     {path:"/Home",component:Home},
-    {path:"/HDetail/reserve",component:Reserve},
     {path:"/Wish",component:Wish},
     {path:"/Login",component:Login},
     {path:"/Register",component:Register},

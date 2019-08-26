@@ -1,9 +1,6 @@
 <template>
     <div>
-        <div class="xyd_dl">
-            <div class="xyd_fh">
-                <span class="iconfont icon-zuo"></span>
-            </div>
+        <div class="xyd_dl" :class="{'divSH':SH}">
             <div id="nav">
                 <mt-navbar v-model="selected">
                     <mt-tab-item id="d1">房源</mt-tab-item>
@@ -13,21 +10,21 @@
             <div id="nav-page">
              <mt-tab-container v-model="selected">
                 <mt-tab-container-item id="d1">
-                    <message></message>
+                    <div class="collect_h">暂无收藏</div>
                 </mt-tab-container-item>
                 <mt-tab-container-item id="d2">
-                    asdsa
+                    <div class="collect_s">暂无故事</div>
                 </mt-tab-container-item>
             </mt-tab-container>
         </div>
         </div>
-        <div class="xyd">
+        <div class="xyd" :class="{'divSH':!SH}">
             <div class="xyd_wdl">
                 <h1>心愿单</h1>
                 <p>登录爱彼迎，查看你的心仪房源、体验与故事</p>
                 <img src="../../public/images/xyd.png" alt="">
                 <div>
-                <a href="javascript:">登录</a> 
+                <router-link to="/Login">登录</router-link>
                 </div>
             </div>
         </div>
@@ -35,22 +32,63 @@
     
 </template>
 <script>
-import Message from "../components/story/message.vue"
+
 export default {
     data() {
         return {
-            selected:"d1"
+            selected:"d1",
+            SH:true,
+            data:{}
         }
     },
+    created() {
+        this.load()
+    },
+    methods: {
+        load(){
+            this.axios.get(
+                "/house/getWishHouse"
+            ).then(res=>{
+                this.data=res.data;
+                console.log(this.data)
+                if(this.code>0){
+
+                }else{
+                    this.SH="false"
+                }
+            })
+        }
+        
+    },
     components:{
-        Message,
+
     }
 }
 </script>
 <style scoped>
+.mint-navbar{
+    width: 100% !important;
+}
+.mint-navbar .mint-tab-item{
+    display: block;
+    font-size: 14px !important;
+    height: 40px !important;
+    padding-top: 13px !important;
+}
+.collect_h,.collect_s{
+    text-align: center;
+    margin-top: 30px;
+}
+.divSH{
+    display: none;
+}
     .xyd{
         margin:5%;
-        display: none;
+    }
+    .xyd_wdl h1{
+        font-size: 24px;
+        font-family: Circular, "PingFang-SC";
+        font-weight: bold;
     }
     .xyd_wdl p{
         color:#484848;

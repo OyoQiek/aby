@@ -13,7 +13,6 @@
           <span class="h_type"><span>{{item.h_type}}</span><strong>·</strong><i>{{item.city}}</i></span>
           <p class="title">{{item.title}}</p>
           <span class="price">￥{{item.price}}<s>￥{{item.original_price}}</s>/晚</span>
-          <p class="pingjia">*****<span>18</span></p>
         </div>
       </div>
       <mt-button class="xsgd" size="large" @click="toSearch">显示更多新房源</mt-button>
@@ -25,35 +24,18 @@ import Carousel from '../../components/carousel'
 export default {
   data() {
     return {
-      data:[],
-      images:[],
     }
   },
-  created() {
-    this.showMore();
+  props:{
+    data:{default:""},
+    images:{default:""}
   },
   methods: {
     toSearch(){
       this.$router.push("/Search")
     },
-    showMore(){
-      this.axios.get(
-        "/house/houseByTime",
-        {params:{
-          pno:1,
-          pagesize:4
-        }}
-      ).then(res=>{
-        console.log(res.data.data);
-        this.data=res.data.data;
-        for(var i=0;i<this.data.length;i++){
-          this.images[i]=this.data[i].pic_address.split(",")
-        }
-      }).catch(err=>{
-
-      })
-    }
   },
+  
   components:{
     Carousel
   }
@@ -106,8 +88,13 @@ export default {
 }
 .title{
   text-overflow: ellipsis;
+  width: 100%;
   overflow: hidden;
   margin-top: 8px;
+  font-size: 13px;
+  font-family: Circular, PingFang-SC, "Hiragino Sans GB", 微软雅黑, "Microsoft YaHei", "Heiti SC" !important;
+  font-weight: bold;
+  color: #484848 !important;
 }
 .price{
   font-size: 14px;

@@ -3,7 +3,7 @@
         <div class="updata_me">
             <div>
                 <h1>冰杖</h1>
-                <p>查看并编辑个人资料</p>
+                <p @click="toUpdate">查看并编辑个人资料</p>
             </div>
             <img src="../../public/images/story/tx.jpg" alt="">
         </div>
@@ -17,7 +17,12 @@
 </template>
 <script>
 export default {
-    
+    methods: {
+        toUpdate(){
+            this.$router.push("/MeUpdate")
+
+        }
+    },
 }
 </script>
 <style scoped>

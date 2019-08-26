@@ -39,6 +39,20 @@ router.post("/reg",(req,res)=>{
         }
     })
 });
+//获取用户信息
+router.get("/getUser",(req,res)=>{
+    var uid=req.session.uid;
+    var sql=`select * from aby_user where uid=?`;
+    pool.query(sql,[uid],(err,result)=>{
+        if(err) throw err;
+        if(result.length){
+            res.send({code:1,msg:"登陆成功",data:result});
+        }else{
+            res.send({code:-1,msg:"用户名或密码错误"})
+        }
+    })
+});
+
 
 
 module.exports=router;

@@ -3,12 +3,12 @@
         <div>
                 <div class="fixed_top" :style="divstyle" >
                 <div class="pr">
-                    <div><span :style="spanstyle" class="iconfont icon-zuo"></span></div>
+                    <div @click="toHome"><span :style="spanstyle" class="iconfont icon-zuo"></span></div>
                     <div><span :style="spanstyle" class="iconfont icon-aixin collect"></span></div>
                 </div>
             </div>
             <!-- 轮播图 -->
-            <div style="height:240px;"><carousel :pics="images"></carousel></div>
+            <div style="height:240px;"><carousel :height="`240px`" :pics="images"></carousel></div>
             <div id="page">
                 <div class="fy_page">
                     <div>
@@ -114,16 +114,19 @@ export default {
             },
             data:[],
             images:[],
-            storyid:1,
             remark:[],
             remark_l:0,
             pl:[]
         }
     },
+    props:["storyid"],
     mounted() {
         window.addEventListener("scroll",this.handleScroll,true)
     },
     methods: {
+        toHome(){
+            this.$router.push("/Home")
+        },
         loadMore(){
             var url="/story/sdetail";
             this.axios.get(url,{params:{
