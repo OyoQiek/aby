@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div style="height:20px"></div>
+        <router-link :to="`/Home`" class="back"><span class="iconfont icon-arrow-left"></span></router-link>
         <div class="login">
             <div>
                 <h1>账号密码登录</h1>
@@ -51,6 +51,7 @@ export default {
                         this.$store.dispatch("upUid")
                         uname.value=""
                         upwd.value=""
+                        this.$router.push("/Home")
                     }).catch(err=>{
                         console.log(err)
                     })
@@ -60,9 +61,6 @@ export default {
 }
 </script>
 <style scoped>
-    h1{
-        font-size:28px;
-    }
     .login{
         margin:16px 5%;
         color: #484848;

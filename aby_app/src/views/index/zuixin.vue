@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     toSearch(){
-      this.$router.push("/Search")
+      this.$router.push(`/Search/房源`)
     },
   },
   

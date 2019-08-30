@@ -21,10 +21,10 @@
         <div class="xyd" :class="{'divSH':!SH}">
             <div class="xyd_wdl">
                 <h1>心愿单</h1>
-                <p>登录爱彼迎，查看你的心仪房源、体验与故事</p>
+                <p>爱彼迎，查看你的心仪房源、体验与故事</p>
                 <img src="../../public/images/xyd.png" alt="">
                 <div>
-                <router-link to="/Login">登录</router-link>
+                <router-link to="/Login1" :class="{'divlSH':lSH}">登录</router-link>
                 </div>
             </div>
         </div>
@@ -32,17 +32,29 @@
     
 </template>
 <script>
-
+import {mapState} from 'vuex'
 export default {
     data() {
         return {
             selected:"d1",
             SH:true,
-            data:{}
+            lSH:true,
+            data:{},
         }
     },
     created() {
         this.load()
+        this.getState()
+    },
+    watch: {
+        uid(){
+            this.getState();
+        }
+    },
+    computed: {
+        ...mapState({
+            uid:state=>state.uid
+        })
     },
     methods: {
         load(){
@@ -57,8 +69,14 @@ export default {
                     this.SH="false"
                 }
             })
+        },
+        getState(){
+            if(this.uid>=0){
+                this.lSH=true
+            }else{
+                this.lSH=false
+            }
         }
-        
     },
     components:{
 
@@ -80,6 +98,9 @@ export default {
     margin-top: 30px;
 }
 .divSH{
+    display: none;
+}
+.divlSH{
     display: none;
 }
     .xyd{

@@ -9,7 +9,7 @@ import HServer from './components/hdetail/server'
 import Home from './views/index.vue'
 import Reserve from './components/hdetail/reserve'
 import Wish from './views/Wish.vue'
-import Login from './views/Login.vue'
+import Login1 from './views/Login1.vue'
 import Register from './views/Register.vue'
 import Me from './views/Me.vue'
 import MeUpdata from './views/MeUpdate.vue'
@@ -28,12 +28,12 @@ export default new Router({
     {path:"/HDetail/server",component:HServer},
     {path:"/Home",component:Home},
     {path:"/Wish",component:Wish},
-    {path:"/Login",component:Login},
+    {path:"/Login1",component:Login1},
     {path:"/Register",component:Register},
     {path:"/Me",component:Me},
     {path:"/MeUpdate",component:MeUpdata},
     {path:"/HDetail/reserve/:message",component:Reserve,props:true},
     {path:"/Date",component:Date},
-    {path:"/Search",component:Search}
+    {path:"/Search/:area",component:Search,props:true}
   ]
 })

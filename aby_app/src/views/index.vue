@@ -11,7 +11,8 @@
                     <story/>
                 </mt-tab-container-item>
                 <mt-tab-container-item id="d4">
-                  <Me/> 
+                    <div :class="{'USH1':SH}"><Login/></div>
+                    <div :class="{'USH2':!SH}"><Me/></div>
                 </mt-tab-container-item>
             </mt-tab-container>
         <mt-tabbar v-model="selected" fixed>
@@ -28,7 +29,7 @@
                 故事
             </mt-tab-item>
             <mt-tab-item id="d4">
-                <div @click="loginSure">
+                <div>
                     <p class="iconfont icon-sousuo "></p>
                     我的
                 </div>
@@ -38,6 +39,7 @@
     </div>
 </template>
 <script>
+import {mapState} from 'vuex'
 import Index from './index/index'
 import Story from "./story.vue"
 import Login from "./Login.vue"
@@ -47,8 +49,12 @@ export default {
     data() {
         return {
             selected:"d1",
-            new_h_data:[]
+            new_h_data:[],
+            SH:false
         }
+    },
+    created() {
+        this.getUid();
     },
     methods: {
         loginSure(){
@@ -63,13 +69,34 @@ export default {
                 }
             })
         },
+        getUid(){
+            console.log(this.uid)
+            console.log(this.SH)
+           if(this.uid>=0){
+                this.SH=true
+            }else{
+                this.SH=false
+            }
+            console.log(this.SH)
+        }
     },
     components:{
         Story,
         Wish,
         Me,
-        Index
-    }
+        Index,
+        Login
+    },
+    computed: {
+        ...mapState({
+            uid:state=>state.uid
+        })
+    },
+    watch: {
+        uid(){
+            this.getUid();
+        }
+    },
 }
 </script>
 <style scoped>
@@ -82,6 +109,12 @@ export default {
 .mint-tabbar > .mint-tab-item.is-selected{
     color:#f00;
     background: #fff;
+}
+.USH1{
+    display:none
+}
+.USH2{
+    display:none
 }
 .mint-tabbar > .mint-tab-item.is-selected div p{
     color:#f00;

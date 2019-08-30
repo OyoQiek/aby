@@ -60,6 +60,9 @@ export default {
 }
 </script>
 <style scoped>
+    h1{
+        font-size:28px;
+    }
     .login{
         margin:16px 5%;
         color: #484848;

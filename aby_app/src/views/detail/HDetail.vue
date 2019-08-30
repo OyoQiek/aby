@@ -166,7 +166,7 @@
             <div>
                 <span>￥{{data.price}}<s>￥{{data.original_price}}</s><i>/晚</i></span>
             </div>
-            <router-link :to="`/HDetail/reserve/${data}`" class="reserve">立即预定</router-link>
+            <router-link :to="`/HDetail/reserve/${data}`"  class="reserve">立即预定</router-link>
         </div>
     </div>
 </template>
@@ -204,7 +204,7 @@ export default {
         Carousel,
         HouseFygs,
     },
-    activated(){
+    created() {
         window.addEventListener("scroll",this.watchScroll);
         this.load();
     },

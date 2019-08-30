@@ -2,7 +2,7 @@
     <div>
         <div class="reserve">
             <div class="topback base">
-                <router-link to="/HDetail"><span class="iconfont icon-chacha"></span></router-link>
+                <router-link to="/Home"><span class="iconfont icon-chacha"></span></router-link>
             </div>
             <div class="top_info base">
                 <div>
@@ -47,7 +47,7 @@
 </template>
 <script>
 export default {
-    props:["message"]
+    props:["message","hid"]
 }
 </script>
 <style scoped>

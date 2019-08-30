@@ -10,19 +10,31 @@
         <div class="dd">
             订单中心
         </div>
-        <div>
+        <div @click="logOut">
             <a href="javascript:">退出登录</a>
         </div>
     </div>
 </template>
 <script>
+
 export default {
     methods: {
         toUpdate(){
             this.$router.push("/MeUpdate")
+        },
+        logOut(){
+            this.axios.get(
+                "/user/logout"
+            ).then(res=>{
+                console.log(res)
+                this.$store.dispatch("downUid");
+            }).catch(err=>{
 
+            })
+            
         }
     },
+    
 }
 </script>
 <style scoped>

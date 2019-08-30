@@ -16,7 +16,7 @@
             </div>
 
           </div>
-          <mt-button class="ss_fy" size="large">搜索房源</mt-button>
+          <mt-button class="ss_fy" size="large" @click="search_H">搜索房源</mt-button>
         </mt-tab-container-item>
         <mt-tab-container-item id="tiyan">
           <div class="dingwei">
@@ -49,13 +49,13 @@
           </div>
           <mt-button @click="quxiao" class="quxiao">取消</mt-button>
         </div>
-        <div @click="diqu" class="diqu" v-for="i of 4" :key="i">  
+        <div @click="diqu(item)" class="diqu" v-for="item,i of column" :key="i">  
           <div class="fdq">
             <div class="fdq-icon">
               <span class="iconfont icon-dianzan1"></span>
             </div>
             <div class="fdq-1">
-              <span class="fdq-font">西湖区</span>
+              <span class="fdq-font">{{item}}</span>
               <p class="fdq-font-1">中国·浙江省·杭州市</p>
             </div>
           </div>
@@ -80,11 +80,23 @@ export default {
       text:"",
       data:[],
       images:[],
-      pno:0
+      pno:0,
+      column:[
+        "西湖区",
+        "拱墅区",
+        "江干区",
+        "上城区",
+        "下城区",
+        "萧山区",
+        "临安区",
+        "滨江区",
+        "余杭区",
+        "富阳区"
+      ]
     }
   },
   components:{carousel,zuixin,xjbfy,gfhp,fangdong},
-  activated() {
+  created() {
     window.addEventListener('scroll',this.handleScroll,true);
     this.showMore();
   },
@@ -100,6 +112,17 @@ export default {
     search(){
       console.log(`查找 ${this.kwords} 相关的内容...`);
       this.$refs.input1.blur();
+    },
+    search_H(){
+      if(!this.jingdian){
+        this.$toast({
+          message:"请选择区域",
+          position:"middle",
+          duration:1000
+        })
+      }else{
+        this.$router.push(`/Search/${this.jingdian}`)
+      }
     },
     handleScroll(){
       var scrollTop=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop;
@@ -120,19 +143,25 @@ export default {
       var quan=document.querySelector(".quan-1");
       quan.style.display="none";
     },
-    diqu(e){
-      var a=e.target;
-      var b=document.querySelector(".fdq-font");
-      if(a.nodeName=="SPAN"||a.nodeName=="P"||a.nodeName=="DIV"){
-        this.text=b.textContent;
-      };
+    // diqu(e){
+    //   var a=e.target;
+    //   var b=document.querySelector(".fdq-font");
+    //   if(a.nodeName=="SPAN"||a.nodeName=="P"||a.nodeName=="DIV"){
+    //     this.text=b.textContent;
+    //   };
+    //   var quan=document.querySelector(".quan-1");
+    //   quan.style.display="none";
+    //   this.jingdian=this.text;
+    // },
+    diqu(item){
+      this.text=item;
       var quan=document.querySelector(".quan-1");
       quan.style.display="none";
       this.jingdian=this.text;
     },
     showMore(){
       this.axios.get(
-        "/house/houseByT"
+        "/house/houseByTime"
       ).then(res=>{
         this.data=res.data.data;
         for(var i=0;i<this.data.length;i++){
