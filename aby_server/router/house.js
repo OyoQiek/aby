@@ -74,22 +74,22 @@ router.get("/houseByTime",(req,res)=>{
         }
     })
 });
-router.get("/houseByT",(req,res)=>{
+//查询所有房源倒序 每次查询9条
+router.get("/houseByArea",(req,res)=>{
     var p=req.query.pno;
     var ps=req.query.pagesize;
+    var area=req.query.area;
     if(!p){p=1}
-    if(!ps){ps=4}
+    if(!ps){ps=9}
     var offset=(p-1)*ps;
     ps=parseInt(ps);
-    var sql=`select * from aby_house group by create_h_time desc  limit ?,?`;
-    pool.query(sql,[offset,ps],(err,result)=>{
+    var sql=`select * from aby_house where harea=? group by create_h_time desc  limit ?,?`;
+    pool.query(sql,[area,offset,ps],(err,result)=>{
         if(err) throw err;
         if(result.length>0){
             res.send({code:1,msg:"查询成功",data:result});
-            return;
         }else{
             res.send({code:-1,msg:"查询失败",data:""});
-            return;
         }
     })
 });

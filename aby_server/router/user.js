@@ -39,6 +39,11 @@ router.post("/reg",(req,res)=>{
         }
     })
 });
+//退出登陆
+router.get("/logout",(req,res)=>{
+    req.session.uid=""
+    res.send({code:1,msg:"退出登陆"})
+})
 //获取用户信息
 router.get("/getUser",(req,res)=>{
     var uid=req.session.uid;
