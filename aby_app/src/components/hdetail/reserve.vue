@@ -2,13 +2,13 @@
     <div>
         <div class="reserve">
             <div class="topback base">
-                <router-link to="/Home"><span class="iconfont icon-chacha"></span></router-link>
+                <router-link :to="`/HDetail/${data.hid}`"><span class="iconfont icon-chacha"></span></router-link>
             </div>
             <div class="top_info base">
                 <div>
-                    <div>整套公寓</div>
+                    <div>{{data.h_type}}</div>
                     <div>
-                        <span>￥285<s>￥285</s><i>/晚</i></span>
+                        <span>￥{{data.price}}<s>￥{{data.original_price}}</s><i>/晚</i></span>
                     </div>
                 </div>
                 <img src="images/h_detail/01/01.jpg" alt="">
@@ -19,35 +19,61 @@
             <div class="base cost">
                 <div class="title">费用和税收明细</div>
                 <div>
-                    <span><i>￥196</i> x <i>1</i>晚</span>
-                    <span>￥196</span>
+                    <span><i>￥{{data.price}}</i> x <i>1</i>晚</span>
+                    <span>￥{{data.price}}</span>
                 </div>
                 <div>
-                    <span>特惠<i>9</i>折</span>
-                    <span>-￥20</span>
+                    <span>特惠<i>{{data.h_zhekou}}</i>折</span>
+                    <span>-￥{{(data.price*(10-data.h_zhekou)*0.1).toFixed(2)}}</span>
                 </div>
                 <div>
                     <span>清洁费</span>
                     <span>￥10</span>
                 </div>
                 <div>
-                    <span>服务费：减免<i>￥24</i></span>
+                    <span>服务费：减免<i>￥{{data.h_server_price}}</i></span>
                     <span>￥0</span>
                 </div>
             </div>
             <div class="base total">
                 <span><b>总价</b></span>
-                <span><b>￥186</b></span>
+                <span><b>￥{{data.price-(data.price*(10-data.h_zhekou)*0.1).toFixed(2)+10}}</b></span>
             </div>
             <div class="base">
-                <router-link to="" class="order">预定</router-link>
+                <router-link @click="order" to="" class="order">预定</router-link>
             </div>
         </div>
     </div>
 </template>
 <script>
 export default {
-    props:["message","hid"]
+    props:["hid"],
+    data() {
+        return {
+            data:[]
+        }
+    },
+    created() {
+        this.load()
+    },
+    methods: {
+        load(){
+            this.axios.get(
+                "/house/hdetail",
+                {params:{
+                    hid:this.hid
+                }}
+            ).then(res=>{
+                console.log(res.data.data[0][0])
+                this.data=res.data.data[0][0]
+            }).catch(err=>{
+                console.log(err)
+            })
+        },
+        order(){
+            // 预定按钮
+        }
+    },
 }
 </script>
 <style scoped>

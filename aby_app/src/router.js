@@ -32,7 +32,7 @@ export default new Router({
     {path:"/Register",component:Register},
     {path:"/Me",component:Me},
     {path:"/MeUpdate",component:MeUpdata},
-    {path:"/HDetail/reserve/:message",component:Reserve,props:true},
+    {path:"/HDetail/reserve/:hid",component:Reserve,props:true},
     {path:"/Date",component:Date},
     {path:"/Search/:area",component:Search,props:true}
   ]

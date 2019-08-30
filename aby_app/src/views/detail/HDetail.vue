@@ -5,6 +5,7 @@
             <div class="pr">
                 <div @click="toH" ><span class="iconfont icon-zuo top_back"></span> </div>
                 <span @click="addWish" class="iconfont icon-aixin collect"></span>
+                <span @click="addWish" class="iconfont icon-aixin1 collect1"></span>
             </div>
         </div>
         <!-- 轮播图 -->
@@ -166,7 +167,7 @@
             <div>
                 <span>￥{{data.price}}<s>￥{{data.original_price}}</s><i>/晚</i></span>
             </div>
-            <router-link :to="`/HDetail/reserve/${data}`"  class="reserve">立即预定</router-link>
+            <router-link :to="`/HDetail/reserve/${data.hid}`"  class="reserve">立即预定</router-link>
         </div>
     </div>
 </template>
@@ -250,6 +251,8 @@ export default {
                     this.pics=this.data.pic_address.split(",");
                     // this.wishBtn=this.data
                 });
+            
+            this.axios.get()
         },
         watchScroll(){
             var top=Math.max(document.body.scrollTop || document.documentElement.scrollTop);
@@ -286,7 +289,8 @@ export default {
         color: #484848;
         font-size: 14px;
         width: 100%;
-        box-sizing: border-box
+        box-sizing: border-box;
+        overflow:hidden
         }
     .collect{
         display: inline-block;
@@ -295,6 +299,15 @@ export default {
         top:10px;
         padding: 8px;
         color: #f8f8f8;
+        z-index: 98;
+    }
+    .collect1{
+        display: inline-block;
+        position: absolute;
+        right: 5%;
+        top:10px;
+        padding: 8px;
+        color: #FF5A5F;
         z-index: 98;
     }
     .fixed_top{
@@ -557,7 +570,7 @@ export default {
         flex-flow: column wrap;
         justify-content: space-between;
         align-items: stretch;
-        height: 60px;
+        height: 30px;
         margin-left: 30px;
     }
     .server .server_type ul li{

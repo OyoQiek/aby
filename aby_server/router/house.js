@@ -131,8 +131,7 @@ router.get("/getWishHouse",(req,res)=>{
     })
 });
 
-// 房源搜索
-//select * from aby_order where (? not between ? and  ?) and (? not between ? and ?)
+
 
 
 
