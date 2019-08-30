@@ -4,8 +4,8 @@
         <div class="fixed_top">
             <div class="pr">
                 <div @click="toH" ><span class="iconfont icon-zuo top_back"></span> </div>
-                <span @click="addWish" class="iconfont icon-aixin collect"></span>
-                <span @click="addWish" class="iconfont icon-aixin1 collect1"></span>
+                <span v-if="!wishBtn" @click="addWish" class="iconfont icon-aixin collect"></span>
+                <span v-else @click="addWish" class="iconfont icon-aixin1 collect1"></span>
             </div>
         </div>
         <!-- 轮播图 -->
@@ -81,12 +81,12 @@
             <h2>房源位置</h2>
             <div class="h_local_info">
                 <div>
-                    <span>{{address[0]}}</span>
+                    <span>{{address1}}</span>
                 </div>
                 <span><img src="images/map_local.png" alt=""></span>
             </div>
             <div class="h_local_cont">
-                {{address[1]}}
+                {{address2}}
             </div>
         </div>
         <!-- 服务设施 -->
@@ -191,7 +191,8 @@ export default {
             },
             tags:[],
             fygl:[],
-            address:[],
+            address1:"",
+            address2:"",
             reserve:[],
             pics:[],
             // 心愿单按钮
@@ -205,17 +206,52 @@ export default {
         Carousel,
         HouseFygs,
     },
+    watch: {
+        '$route'(){
+            this.load()
+        }
+    },
     created() {
-        window.addEventListener("scroll",this.watchScroll);
+        window.addEventListener("scroll",this.watchScroll,false);
         this.load();
     },
     methods: {
         toH(){
-            window.removeEventListener("scroll",this.watchScroll);
+            window.removeEventListener("scroll",this.watchScroll,false);
             this.$router.push({path:"/Home"})
         },
         addWish(){
-            
+            if(this.wishBtn){
+                var data=new URLSearchParams();
+                data.append("hid",this.hid)
+                this.axios.post("/house/delhouseZan",data).then(res=>{
+                    if(res.data.code>0){
+                        this.load()
+                    }
+                    }
+                ).catch(err=>{
+                    console.log(err)
+                })
+            }else{
+                var data=new URLSearchParams();
+                data.append("hid",this.hid);
+                this.axios.post(
+                    "/house/houseZan",
+                    data
+                ).then(res=>{
+                    if(res.data.code<0){
+                        this.$toast({
+                            message:"请先登陆账户",
+                            duration:1000,
+                            position:'middle'
+                        })
+                    }else{
+                        this.load()
+                    }
+                }).catch(err=>{
+                    console.log(err)
+                })
+            }
         },
         load(){
             this.axios.get(
@@ -225,7 +261,7 @@ export default {
                         hid:this.hid
                     }
                 }).then(res=>{
-                    console.log(res.data.data[0][0]);
+                    console.log(res);
                     // 房源数据
                     this.data=res.data.data[0][0];
                     // 房源评论
@@ -233,7 +269,6 @@ export default {
                     this.runame=this.remark[0].uname;
                     this.rr_time=this.remark[0].r_time;
                     this.rr_remark=this.remark[0].r_remark;
-                    console.log(this.remark)
                     if(!this.data.new_house){this.sh2.display="none"}
                     if(!this.data.landlord){this.sh1.display="none"}
                     // 房源标签
@@ -242,17 +277,18 @@ export default {
                     this.fygl=this.data.h_subinfo.split(",");
                     this.fygl.pop();
                     // 地址
-                    this.address=this.data.addr_detail.split("/");
+                    this.address1=this.data.addr_detail.split("/")[0];
+                    this.address2=this.data.addr_detail.split("/")[1];
                     // 立即预定
                     this.reserve.push(this.data.price);
                     this.reserve.push(this.data.original_price);
                     this.reserve.push(this.data.original_price);
                     // 轮播图地址
                     this.pics=this.data.pic_address.split(",");
-                    // this.wishBtn=this.data
+                    this.wishBtn=res.data.data[2]
+                    console.log(this.wishBtn)
                 });
             
-            this.axios.get()
         },
         watchScroll(){
             var top=Math.max(document.body.scrollTop || document.documentElement.scrollTop);
@@ -266,7 +302,9 @@ export default {
                 div.style.height="60px";
                 div.style.boxShadow="none";
                 topBack.style.color="#fff";
-                topLike.style.color="#fff";
+                if(!this.wishBtn){
+                    topLike.style.color="#fff";
+                }
             }else if(top>this.st && top>240){
                 div.style.height="0px"
             }else if(top<this.st && top>240){
@@ -276,7 +314,10 @@ export default {
                 div.style.height="60px";
                 div.style.boxShadow=" 0 0 10px 0 rgba(0, 0, 0, .3)";
                 topBack.style.color="#484848";
-                topLike.style.color="#484848";
+                if(!this.wishBtn){
+                    topLike.style.color="#484848";
+                }
+                
             }
             this.st=top+1;
         },

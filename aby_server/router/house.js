@@ -22,8 +22,8 @@ router.get("/hdetail",(req,res)=>{
                         res.send({code:1,msg:"查询成功",data:data});
                         return;
                     }
-                    sql=`select * from aby_wish where uid=?`;
-                    pool.query(sql,[uid],(err,result1)=>{
+                    sql=`select * from aby_wish where uid=? and hid=?`;
+                    pool.query(sql,[uid,hid],(err,result1)=>{
                         if(err) throw err;
                         if(result1.length){
                             data[2]=true;
@@ -95,7 +95,7 @@ router.get("/houseByArea",(req,res)=>{
 });
 
 
-//房源收藏心愿单
+//房源添加心愿单
 router.post("/houseZan",(req,res)=>{
     var hid=req.body.hid;
     var uid=req.session.uid;
@@ -110,6 +110,24 @@ router.post("/houseZan",(req,res)=>{
             res.send({code:1,msg:"添加成功",data:result});
         }else{
             res.send({code:-1,msg:"添加失败",data:""});
+        }
+    })
+});
+//房源删除心愿单
+router.post("/delhouseZan",(req,res)=>{
+    var hid=req.body.hid;
+    var uid=req.session.uid;
+    if(!uid){
+        res.send({code:-2,msg:"请先登陆账户",data:""});
+        return;
+    }
+    var sql=`delete from aby_wish where uid=? and hid=?`;
+    pool.query(sql,[uid,hid],(err,result)=>{
+        if(err) throw err;
+        if(result.affectedRows>0){
+            res.send({code:1,msg:"删除成功",data:result});
+        }else{
+            res.send({code:-1,msg:"删除失败",data:""});
         }
     })
 });

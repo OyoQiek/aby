@@ -20,7 +20,7 @@
                     <a href="javascript:" @click="reg()">立即注册</a>
                 </div>
                 <div class="reg_btn">
-                    <router-link  to="/Login" class="toLogin"><span>已有账号,请登录?</span></router-link>
+                    <router-link  to="/Home" class="toLogin"><span>已有账号,请登录?</span></router-link>
                 </div>
             </div>
         </div>
@@ -47,7 +47,7 @@ export default {
                 ).then(res=>{
                     console.log(res)
                     if(res.data.code>0){
-                        this.$router.push("/Login")
+                        this.$router.push("/Home")
                     }else{
                         
                     }

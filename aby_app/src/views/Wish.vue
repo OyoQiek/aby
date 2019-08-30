@@ -10,10 +10,24 @@
             <div id="nav-page">
              <mt-tab-container v-model="selected">
                 <mt-tab-container-item id="d1">
-                    <div class="collect_h">暂无收藏</div>
+                    <div class="collect_h" :class="{'divSH':!SH}">暂无收藏</div>
+                    <div :class="{'divSH':SH}">
+                        <router-link :to="`/HDetail/${item.hid}`"  v-for="(item,i) of data" :key="i">
+                        <div class="for-car">
+                            <div class="for-carousel"><carousel :height="`180px`" :pics="images[i]"></carousel></div>
+                            <div class="for-xia">
+                                <p class="h_type">{{item.h_type}}·{{item.city}}</p>
+                                <p class="title">{{item.title}}</p>
+                                <p class="pingjia">*****<span>45</span>条评论</p>
+                                <hr>
+                                <p class="price">￥<span>{{item.price}}</span>/晚</p>
+                            </div>
+                        </div>
+                        </router-link>
+                    </div>
                 </mt-tab-container-item>
                 <mt-tab-container-item id="d2">
-                    <div class="collect_s">暂无故事</div>
+                    <div class="collect_s" :class="{'divSH':!sWish}">暂无故事</div>
                 </mt-tab-container-item>
             </mt-tab-container>
         </div>
@@ -33,13 +47,17 @@
 </template>
 <script>
 import {mapState} from 'vuex'
+import carousel from "../components/carousel"
 export default {
     data() {
         return {
             selected:"d1",
             SH:true,
             lSH:true,
-            data:{},
+            sWish:true,
+            data:[],
+            images:[]
+            
         }
     },
     created() {
@@ -49,6 +67,10 @@ export default {
     watch: {
         uid(){
             this.getState();
+            this.load()
+        },
+        '$route'(){
+            this.load()
         }
     },
     computed: {
@@ -62,11 +84,14 @@ export default {
                 "/house/getWishHouse"
             ).then(res=>{
                 this.data=res.data;
-                console.log(this.data)
-                if(this.code>0){
-
+                if(this.data.code>0){
+                    this.SH=false
+                    this.data=res.data.data
+                    for(var i=0;i<this.data.length;i++){
+						this.images[i]=this.data[i].pic_address.split(",")
+					}
                 }else{
-                    this.SH="false"
+                    this.SH=true
                 }
             })
         },
@@ -79,7 +104,7 @@ export default {
         }
     },
     components:{
-
+        carousel
     }
 }
 </script>
@@ -143,4 +168,35 @@ export default {
     .mint-navbar{
         width: 40%;
     }
+    .for-car{
+        padding:20px 5%;
+    }
+    .for-xia{
+        margin:20px 5% 0;
+	}
+	hr{
+		color: #eee;
+	}
+	.h_type{
+		font-size: 8px;
+		color: sienna;
+		margin-left: 10px;
+	}
+	.title{
+		text-overflow: ellipsis;
+		overflow: hidden;
+		margin-top: 8px;
+		margin-left: 10px;
+
+	}
+	.price{
+		font-size: 14px;
+		margin-top: 10px;
+		display: inline-block;
+		margin-left: 10px;
+		margin-bottom: 10px;
+	}
+	.price>span{
+		font-weight: 700;
+	}
 </style>

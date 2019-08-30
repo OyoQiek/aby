@@ -39,7 +39,7 @@ export default {
     },
     methods: {
         Login(){
-                if(!!uname && !!upwd){
+                if(!!uname.value && !!upwd.value){
                     this.axios.get(
                         "/user/login",{
                         params:{
@@ -48,11 +48,22 @@ export default {
                         }}
                     ).then(res=>{
                         console.log(res)
-                        this.$store.dispatch("upUid")
-                        uname.value=""
-                        upwd.value=""
+                        if(res.data.code>0){
+                            this.$store.dispatch("upUid")
+                            uname.value=""
+                            upwd.value=""
+                        }else{
+                            this.$toast({
+                                message:res.data.msg
+                            })
+                        }
+                        
                     }).catch(err=>{
                         console.log(err)
+                    })
+                }else{
+                    this.$toast({
+                        message:"用户名密码不能为空"
                     })
                 }
             }

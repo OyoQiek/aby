@@ -61,6 +61,9 @@ insert into aby_Tags values(null,1,"可以做饭/可以停车/有烘干机");
 insert into aby_Tags values(null,2,"可以轰趴/可以停车/有烘干机");
 insert into aby_Tags values(null,3,"可以做饭/可以停车");
 insert into aby_Tags values(null,4,"可以做饭/可以停车/可以长租");
+insert into aby_Tags values(null,5,"可以做饭/可以停车/可以长租");
+insert into aby_Tags values(null,6,"可以做饭/可以停车/可以长租");
+insert into aby_Tags values(null,7,"可以做饭/可以停车/可以长租");
 #创建保存房源便利设施的表
 CREATE TABLE aby_server(
     sid INT PRIMARY KEY AUTO_INCREMENT,
@@ -110,6 +113,10 @@ insert into aby_remark values(null,1,"扩达","2019/7/7","老板很负责,房子
 insert into aby_remark values(null,2,"扩达","2019/7/7","老板很负责,房子热水24小时供应,还有一个超大的投影仪,还有一个蓝牙音箱让我高兴坏了,对于喜欢听歌的我来说是真爱,床也很大两个人完全没有问题,一句话,老哥稳~");
 insert into aby_remark values(null,3,"扩达","2019/7/7","老板很负责,房子热水24小时供应,还有一个超大的投影仪,还有一个蓝牙音箱让我高兴坏了,对于喜欢听歌的我来说是真爱,床也很大两个人完全没有问题,一句话,老哥稳~");
 insert into aby_remark values(null,4,"扩达","2019/7/7","老板很负责,房子热水24小时供应,还有一个超大的投影仪,还有一个蓝牙音箱让我高兴坏了,对于喜欢听歌的我来说是真爱,床也很大两个人完全没有问题,一句话,老哥稳~");
+insert into aby_remark values(null,5,"扩达","2019/7/7","老板很负责,房子热水24小时供应,还有一个超大的投影仪,还有一个蓝牙音箱让我高兴坏了,对于喜欢听歌的我来说是真爱,床也很大两个人完全没有问题,一句话,老哥稳~");
+insert into aby_remark values(null,6,"扩达","2019/7/7","老板很负责,房子热水24小时供应,还有一个超大的投影仪,还有一个蓝牙音箱让我高兴坏了,对于喜欢听歌的我来说是真爱,床也很大两个人完全没有问题,一句话,老哥稳~");
+insert into aby_remark values(null,7,"扩达","2019/7/7","老板很负责,房子热水24小时供应,还有一个超大的投影仪,还有一个蓝牙音箱让我高兴坏了,对于喜欢听歌的我来说是真爱,床也很大两个人完全没有问题,一句话,老哥稳~");
+insert into aby_remark values(null,6,"扩达","2019/7/7","老板很负责,房子热水24小时供应,还有一个超大的投影仪,还有一个蓝牙音箱让我高兴坏了,对于喜欢听歌的我来说是真爱,床也很大两个人完全没有问题,一句话,老哥稳~");
 #创建用户故事评论表
 CREATE TABLE aby_storyremark(
     srid INT PRIMARY KEY AUTO_INCREMENT,  #故事评论表ID

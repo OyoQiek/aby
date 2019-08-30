@@ -100,6 +100,11 @@ export default {
     window.addEventListener('scroll',this.handleScroll,true);
     this.showMore();
   },
+  watch: {
+    '$route'(){
+      this.showMore()
+    }
+  },
   directives:{
     focus:{
       inserted:function(el,{value}){

@@ -54,30 +54,27 @@ export default {
         }
     },
     created() {
-        this.getUid();
+        this.getLogin()
     },
     methods: {
-        loginSure(){
-            this.axios.get(
-                "/user/getUser"
-            ).then(res=>{
-                console.log(res)
-                if(res.data.code>0){
-
-                }else{
-                    this.$router.push("/Login")
-                }
-            })
-        },
         getUid(){
-            console.log(this.uid)
-            console.log(this.SH)
-           if(this.uid>=0){
+            if(this.uid>=0){
                 this.SH=true
             }else{
                 this.SH=false
             }
-            console.log(this.SH)
+        },
+        getLogin(){
+            this.axios.get(
+                "/user/getUser"
+            ).then(res=>{
+                if(res.data.code>0){
+                    this.$store.dispatch("upUid")
+                }else{
+                    this.$store.dispatch("downUid")
+                }
+                this.getUid();
+            }).catch(err=>{console.log(err)})
         }
     },
     components:{
