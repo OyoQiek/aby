@@ -51,7 +51,7 @@ router.get("/getStoryWish",(req,res)=>{
         if(result.length){
             res.send({code:1,msg:"查询成功",data:result})
         }else{
-            res.send({code:-1,msg:"查询成功",data:""})
+            res.send({code:-1,msg:"查询心愿单故事失败",data:""})
         }
     })
 })
