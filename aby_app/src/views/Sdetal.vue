@@ -12,8 +12,8 @@
             <div id="page">
                 <div class="fy_page">
                     <div>
-                        <p class="fybt">{{data[0].subtitle}}</p>
-                        <h2>{{data[0].story_title}}</h2>
+                        <p class="fybt">{{story.subtitle}}</p>
+                        <h2>{{story.story_title}}</h2>
                     </div>
                     <div class="zan">
                             <div>
@@ -21,10 +21,10 @@
                             </div>
                             <div>
                                 <h5>Lena</h5>
-                                <span>{{data[0].story_date}}</span>
+                                <span>{{story.story_date}}</span>
                             </div>
                     </div>
-                    <div><p>{{data[0].story_content}}</p></div>
+                    <div><p>{{story.story_content}}</p></div>
                     <div>
                         <span class="iconfont icon-dianzan"></span>
                         <span>833人已赞</span>
@@ -67,10 +67,10 @@
             <div class="tcpl">
                 <div>
                     <span class="iconfont icon-chacha" @click="closepl"></span>
-                    <span>提交</span>
+                    <span @click="tjpage">提交</span>
                 </div>
                 <div>
-                    <textarea name="" id="" placeholder="说点什么..."></textarea>
+                    <textarea name="" id="" v-model="plpage" placeholder="说点什么..."></textarea>
                 </div>
             </div>
             <div class="plnrk" >
@@ -92,7 +92,7 @@
                                     </div>
                                 </div>
                         </div>
-                        <p>{{remark.r_remark}}</p>
+                        <p>{{item.r_remark}}</p>
                     </div>
                 </div>
             </div>
@@ -112,11 +112,13 @@ export default {
             spanstyle:{
                 color:"#fff"
             },
+            story:[],
             data:[],
             images:[],
             remark:[],
             remark_l:0,
-            pl:[]
+            pl:[],
+            plpage:''
         }
     },
     props:["storyid"],
@@ -132,14 +134,37 @@ export default {
             this.axios.get(url,{params:{
                 storyid:this.storyid
             }}).then(res=>{
+                this.story=res.data.data[0][0];
                this.data=res.data.data[0];
                this.images=this.data[0].story_pic.split(",");
                this.remark=res.data.data[1][0];
-               console.log(res.data.data)
+               console.log(this.remark)
                this.remark_l=res.data.data[1].length
-               console.log(this.remark_l)
                this.pl=res.data.data[1]
             })
+        },
+        tjpage(){
+            var url="/story/addremark"
+            if(!this.plpage){
+                this.$toast("内容不能为空")
+            }else{
+                this.axios.get(url,{
+                params:{
+                    storyid:this.storyid,
+                    r_remark:this.plpage,
+                }
+                }).then(res=>{
+                    console.log(res)
+                    if(res.data.code<0){
+                         this.$toast("请先登录")
+                         this.plpage=""
+                    }else{
+                        this.$toast("提交成功")
+                        this.plpage=""
+                    }
+                })
+            }
+            
         },
         handleScroll(){
             let st=Math.max(document.body.scrollTop || document.documentElement.scrollTop);
@@ -167,15 +192,13 @@ export default {
         tcplnr(){
             var plk=document.querySelector(".plnrk");
             plk.style.width="100%"
-            plk.style.position="absolute"
-            plk.style.height="auto"
+
 
         },
          closeplnr(){
              var plfh=document.querySelector(".plnrk")
             plfh.style.width="0"
-            plfh.style.position="fixed"
-            plfh.style.height="100%"
+    
         },
         
     },

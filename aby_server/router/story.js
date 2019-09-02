@@ -55,7 +55,31 @@ router.get("/getStoryWish",(req,res)=>{
         }
     })
 })
-
+//添加评论
+router.get("/addremark",(req,res)=>{
+    var uid=req.session.uid;
+    var storyid=req.query.storyid
+    var r_time=new Date().getFullYear()+'年'+(new Date().getMonth()+1)+'月'+new Date().getDate()+'日'
+    var r_remark=req.query.r_remark
+    console.log(r_time)
+    if(!uid){
+        res.send({code:-2,msg:'请先登录账户'})
+        return;
+    }else{
+        var sql="select uname from aby_user where uid=?"
+        pool.query(sql,[uid],(err,result)=>{
+            if(err)throw err
+            console.log(result[0].uname)
+            var uname=result[0].uname
+            var sql="INSERT INTO aby_storyremark VALUES(null,?,?,?,?) "
+            pool.query(sql,[storyid,uname,r_time,r_remark],(err,result)=>{
+                if(err) throw err;
+                res.send({code:1,msg:"添加成功"})
+             })
+        })
+    }
+    
+})
 
 
 module.exports=router;
