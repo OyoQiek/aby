@@ -28,6 +28,30 @@
                 </mt-tab-container-item>
                 <mt-tab-container-item id="d2">
                     <div class="collect_s" :class="{'divSH':!sWish}">暂无故事</div>
+                    <div :class="{'divSH':sWish}">
+                        <div class="message"  v-for="(item,i) of sData" :key="i">
+                            <div class="imga">
+                                <router-link :to="`/Sdetal/${item.storyid}`"><img :src="sImages[i][0]" alt=""></router-link>
+                                <span class="iconfont icon-dianzan1"></span>
+                                <div>房源</div>
+                            </div>
+                            
+                            <p>{{item.subtitle}}</p><span>{{item.story_title}}</span>
+                            <div class="zan">
+                                <div>
+                                    <img src="``" alt="">
+                                </div>
+                                <div>
+                                    <span class="iconfont icon-dianzan1"></span>
+                                    <span>{{item.zan}}</span>
+                                </div>
+                                <div>
+                                    <span class="iconfont icon-message-fill"></span>
+                                    <span>70</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </mt-tab-container-item>
             </mt-tab-container>
         </div>
@@ -56,8 +80,9 @@ export default {
             lSH:true,
             sWish:true,
             data:[],
-            images:[]
-            
+            images:[],
+            sData:[],
+            sImages:[],
         }
     },
     created() {
@@ -92,6 +117,20 @@ export default {
 					}
                 }else{
                     this.SH=true
+                }
+            })
+            this.axios.get(
+                "/story/getStoryWish"
+            ).then(res=>{
+                console.log(res.data)
+                if(res.data.code>0){
+                    this.sWish=false
+                    this.sData=res.data.data;
+                    for(var i=0;i<this.sData.length;i++){
+                        this.sImages[i]=this.sData[i].story_pic.split(",");
+                    }
+                }else{
+                    this.sWish=true;
                 }
             })
         },
@@ -199,4 +238,59 @@ export default {
 	.price>span{
 		font-weight: 700;
 	}
+    .message{
+        width: 100%;
+        font-size: 14px;
+        padding: 20px 5%;
+        box-sizing: border-box;
+    }
+    .message img{
+        width: 100%;
+        height: 180px;
+    }
+    .message p{
+        display: inline;
+        margin-right: 8px;
+        font-weight: bold;
+    }
+    .zan{
+        display: flex;
+        align-items: center;
+    }
+
+    .zan div img{
+        border-radius: 50%;
+         width: 22px;
+        margin-right: 15px;
+        margin-top:5px;
+    }
+    .zan div~div span:first-child{
+        color:#666;
+        font-size: 14px;
+        vertical-align: middle;
+        margin:0 2px;
+    }
+      .zan div~div span:last-child{
+        color:#000;
+        font-size:12px;
+    }
+    .imga{
+        position: relative;
+    }
+    .imga span{
+        position: absolute;
+        top:10px;
+        right:10px;
+        font-size: 20px;
+        color:#fff;
+    }
+    .imga div{
+        position: absolute;
+        bottom:13px;
+        right:10px;
+        background: #fff;
+        padding: 4px 12px;
+        border-radius: 3px;
+        font-size:10px;
+    }
 </style>

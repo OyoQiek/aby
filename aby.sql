@@ -151,3 +151,5 @@ create table aby_wish_content(
     storyid INT,
     hid INT
 );
+insert into aby_wish_content values(null,1,1);
+insert into aby_wish_content values(null,1,1);
