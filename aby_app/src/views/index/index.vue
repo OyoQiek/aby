@@ -49,7 +49,7 @@
           </div>
           <mt-button @click="quxiao" class="quxiao">取消</mt-button>
         </div>
-        <div @click="diqu(item)" class="diqu" v-for="item,i of column" :key="i">  
+        <div @click="diqu(item)" class="diqu" v-for="(item,i) of column" :key="i">  
           <div class="fdq">
             <div class="fdq-icon">
               <span class="iconfont icon-dianzan1"></span>

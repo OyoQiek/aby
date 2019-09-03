@@ -202,8 +202,10 @@ export default {
          height: 200px;
     }
     #nav-page h1{
-        margin-top: 150px;
+        margin-top: 120px;
         margin-left: 5%;
+        font-size: 28px;
+        font-weight: 700
     }
     
 </style>

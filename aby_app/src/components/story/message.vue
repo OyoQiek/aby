@@ -26,8 +26,8 @@
             </div>
            
         </div>    
-          <div class="btn" @click="loadMore">
-                        <a href="javascript:">显示更多故事</a>
+            <div class="btn" @click="loadMore" v-if="pd==true">
+                <a href="javascript:">显示更多故事</a>
             </div>
     </div>
     
@@ -38,7 +38,8 @@ export default {
         return {
             list:[],
             pno:0,
-            images:[]
+            images:[],
+            pd:true
         }
     },
     methods: {  
@@ -48,6 +49,12 @@ export default {
             var obj={pno:this.pno}
             this.axios.get(url,{params:obj}).then(res=>{
                 var rows=this.list.concat(res.data.data);
+                console.log(rows)
+                if(res.data.data.length>0){
+                    this.pd=true
+                }else{
+                    this.pd=false
+                }
                 this.list=rows;
                 for(var i=0;i<this.list.length;i++){
                     this.images[i]=this.list[i].story_pic;
@@ -59,6 +66,16 @@ export default {
     },
     created() {
         this.loadMore()
+    },
+    watch: {
+        '$route'(){
+            this.pno=0;
+            this.data=[]
+            this.list=[]
+            this.images=[]
+            this.pd=true
+            this.loadMore()
+        }
     },
 }
 </script>
